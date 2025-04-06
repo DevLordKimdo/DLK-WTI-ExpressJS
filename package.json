@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "config": "^3.3.12",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "@types/config": "^3.3.5",
+    "@types/express": "^5.0.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "pm2 start ecosystem.config.js --env dev",
+    "restart": "npm run build && pm2 restart 'TypeScript Demo'",
+    "dev": "tsc -w"
+  }
+}

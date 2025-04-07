@@ -1,10 +1,3 @@
-// 빌드 명령어 (타입스크립트로 작성된 코드를 자바스크립트 코드로 변환해주는 과정)
-// npm run build 
-
-// 프로젝트 시작 명령어
-// pm2 start ecosystem.config.js --env dev
-// pm2 start ecosystem.config.js --env prod
-
 module.exports = {
     apps: [
         {

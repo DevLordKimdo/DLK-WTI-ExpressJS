@@ -7,7 +7,7 @@ const svrConf = config.get('server')   as { port: number };
 const svrPort = svrConf.port;
 
 const dbConf  = config.get('database') as { port: number };
-const dbPort = svrConf.port;
+const dbPort = dbConf.port;
 
 console.log(`Express TypeScript Demo 접속 완료.`);
 console.log(`서버 접속포트 번호 : ${svrPort}`);

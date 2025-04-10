@@ -1,4 +1,4 @@
-1. 해당 프로젝트는 타입스크립트를 사용하므로 모듈 설치할때 타입 정의도 같이 설치를 해줘야 한다.
+1. 해당 프로젝트는 타입스크립트를 사용하므로 모듈 설치할때 타입 정의도 같이 설치를 해줘야 한다. (타입스크립트 제거. 내용 수정예정)
 예시)
 npm install better-sqlite3 // 실제 패키지 설치
 npm install @types/better-sqlite3 --save-dev // 타입 정의 설치 (개발 의존성으로) (--save-dev는 해당 패키지를 devDependencies 에 설치하라는 명령어)

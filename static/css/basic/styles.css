@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+body {
+	width:1000px;
+    height:300px;
+    margin:0 auto;
+}
+
+table tbody tr td {
+	text-align:center;
+}

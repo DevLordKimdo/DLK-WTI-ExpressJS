@@ -1,10 +1,19 @@
 {
     "database": {
-        "host"      : "",
-        "port"      : 3306,
-        "username"  : "",
-        "password"  : "",
-        "database"  : ""
+        "driver"      : "SQLite", 
+        "host"        : "",
+        "port"        : null,
+        "username"    : "devlordkimdo",
+        "password"    : "1234",
+        "name"        : "DLK",
+        "memory"      : false,
+        "readonly"    : false,
+        "timeout"     : 5000,
+        "memoryLimit" : 16777216,
+        "pageSize"    : 4096,
+        "init"        : true,
+        "journal"     : "wal",
+        "mode"        : "normal"
     },
     "server": {
         "port"      : 3000

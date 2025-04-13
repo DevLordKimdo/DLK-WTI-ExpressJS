@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Db Crud Basic Read</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<form action="/db/crud/basic/update/<%= read.idx %>" method="post">
+		<div>번호 : <%= read.idx %></div>
+		<div>날짜 : <%= read.datetime %></div>
+		<div>조회 : <%= read.hit %></div>
+		<div>이름 : <input type="text" name="name"  value="<%= read.name %>"/></div>
+		<div>제목 : <input type="text" name="title" value="<%= read.title %>"/></div>
+		<div>내용 : <textarea name="content"><%= read.content %></textarea></div>
+		<div><input type="submit" value="수정"></div>
+	</form>
+		<div><a href="/db/crud/basic/list"><button>목록</button></a></div>
+		<div><a href="/db/crud/basic/delete/<%= read.idx %>"><button>삭제</button></a></div>
+</body>
+</html>

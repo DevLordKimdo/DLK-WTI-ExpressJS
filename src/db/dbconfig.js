@@ -1,19 +1,41 @@
-const path = require('path');
-const fs = require('fs');
-const database = require('better-sqlite3');
+const fs       = require('fs');
+const sqlite3  = require('better-sqlite3');
+const config   = require('config');
+const dbConfig = config.get('database');
 
-// 데이터베이스 연결 생성
-const db = database('C:/SQL/database.db');
-
-// 초기 쿼리 실행 (필요한 경우)
-try {
-  const sqlFilePath = path.join(__dirname, '/StartQuery.sql');
-  const startQuery = fs.readFileSync(sqlFilePath, 'utf8');
-  db.exec(startQuery);
-  console.log('데이터베이스 초기화 완료');
-} catch (err) {
-  console.error('데이터베이스 초기화 오류:', err);
+// 데이터베이스 옵션 지정
+const dbOption = {
+  readonly    : dbConfig.readonly,     // 읽기 전용. SELECT만 가능, CUD문 불가.
+  timeout     : dbConfig.timeout,      // 데이터베이스 연결 시 시간제한 timeout (ms)
+  memoryLimit : dbConfig.memoryLimit,  // 메모리 사용량 제한 (바이트) SQLite가 사용할 수 있는 최대 메모리.
+  pageSize    : dbConfig.pageSize,     // 데이터베이스 페이지 크기
+  mode        : dbConfig.mode,         // 동시성 제어. (normal / exclusive) 다른 서비스에서 해당 DB를 제어 가능 여부 옵션
+  
+  // 저널모드.  데이터베이스 변경사항을 어떻게 추적하고 저장할지 결정.
+  // (delete / truncate / persist / memory / wal / off)
+  // wal : 변경사항을 별도의 WAL 파일에 기록. 읽기와 쓰기 작업을 동시에 처리
+  journal     : dbConfig.journal
 }
 
-// db 객체 내보내기
+// 데이터베이스 연결 생성
+let MemOption;
+
+if(dbConfig.memory === true) { // 메모리 모드
+  MemOption = ':memory:';
+} else { // 파일모드
+  MemOption = global.dbfilePath;
+}
+
+const db    = sqlite3(MemOption, dbOption);
+
+// 초기화 모드 실행 코드
+if(dbConfig.init === true) {
+  try {
+    const dbInitQry = fs.readFileSync(global.dbInitQry, 'utf8');
+    db.exec(dbInitQry);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = { db };

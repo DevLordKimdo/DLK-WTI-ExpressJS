@@ -3,13 +3,13 @@ const { sqlFormat } = require(global.rootPath + '/util/sqlManager');
 
 const list = () => {
     try {
-        let qry  = " SELECT idx,       ";
-            qry += "        title,     ";
-            qry += "        content,   ";
-            qry += "        name,      ";
-            qry += "        datetime,  ";
-            qry += "        hit        ";
-            qry += "   FROM crud       ";
+        let qry  = " SELECT idx        ";
+            qry += "      , title      ";
+            qry += "      , content    ";
+            qry += "      , name       ";
+            qry += "      , datetime   ";
+            qry += "      , hit        ";
+            qry += "   FROM post_board ";
 
             const result = db.prepare(qry).all();
         
@@ -21,18 +21,18 @@ const list = () => {
 
 const create = (params) => {
     try {
-        let qry  = " INSERT INTO crud (                  ";
-            qry += "        title,                       ";
-            qry += "        content,                     ";
-            qry += "        name,                        ";
-            qry += "        datetime,                    ";
-            qry += "        hit                          ";
+        let qry  = " INSERT INTO post_board (            ";
+            qry += "        title                        ";
+            qry += "      , content                      ";
+            qry += "      , name                         ";
+            qry += "      , datetime                     ";
+            qry += "      , hit                          ";
             qry += " ) VALUES (                          ";
-            qry += "       :title,                       ";
-            qry += "       :content,                     ";
-            qry += "       :name,                        ";
-            qry += "       datetime('now', 'localtime'), ";
-            qry += "       '0'                           ";
+            qry += "        :title                       ";
+            qry += "      , :content                     ";
+            qry += "      , :name                        ";
+            qry += "      , datetime('now', 'localtime') ";
+            qry += "      , '0'                          ";
             qry += " )                                   ";
 
             db.prepare(qry).run({
@@ -49,13 +49,13 @@ const create = (params) => {
 
 const read = (params) => {
     try {
-        let qry  = " SELECT idx,       ";
-            qry += "        title,     ";
-            qry += "        content,   ";
-            qry += "        name,      ";
-            qry += "        datetime,  ";
-            qry += "        hit        ";
-            qry += "   FROM crud       ";
+        let qry  = " SELECT idx        ";
+            qry += "      , title      ";
+            qry += "      , content    ";
+            qry += "      , name       ";
+            qry += "      , datetime   ";
+            qry += "      , hit        ";
+            qry += "   FROM post_board ";
             qry += "  WHERE idx = :idx ";
 
             const result = db.prepare(qry).get({
@@ -70,7 +70,7 @@ const read = (params) => {
 
 const updateHit = (params) => {
     try {
-        let qry  = " UPDATE crud          ";
+        let qry  = " UPDATE post_board    ";
             qry += "    SET hit = hit + 1 ";
             qry += "  WHERE idx = :idx    ";
 
@@ -86,7 +86,7 @@ const updateHit = (params) => {
 
 const update = (params) => {
     try {
-        let qry  = " UPDATE crud               ";
+        let qry  = " UPDATE post_board         ";
             qry += "    SET title   = :title   ";
             qry += "      , name    = :name    ";
             qry += "      , content = :content ";
@@ -108,7 +108,7 @@ const update = (params) => {
 const deletePost = (params) => {
     try {
         let qry  = " DELETE             ";
-            qry += "   FROM crud        ";
+            qry += "   FROM post_board  ";
             qry += "  WHERE idx  = :idx ";
 
             db.prepare(qry).run({

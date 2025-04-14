@@ -1,6 +1,6 @@
 const express        = require('express');
 const router         = express.Router();
-const dbCrud_mdl     = require(global.rootPath + '/models/db/crud/dbCrud_mdl');
+const dbCrud_mdl     = require(global.rootPath + '/models/dbCrud_mdl');
 
 
 router.get(['/','/list'], async (req, res) => {

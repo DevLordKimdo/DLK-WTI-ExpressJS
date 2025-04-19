@@ -2,7 +2,6 @@ const express        = require('express');
 const router         = express.Router();
 const dbCrud_mdl     = require(global.rootPath + '/models/dbCrud_mdl');
 
-
 router.get(['/','/list'], async (req, res) => {
 
     let list = dbCrud_mdl.list();
@@ -18,9 +17,9 @@ router.get('/create', async (req, res) => {
 router.post('/create', async (req, res) => {
 
     let form = {
-        title   : req.body.title,
-        content : req.body.content,
-        name    : req.body.name
+          title   : req.body.title
+        , content : req.body.content
+        , name    : req.body.name
     }
 
     dbCrud_mdl.create(form);
@@ -41,10 +40,10 @@ router.get('/read/:idx', async (req, res) => {
 router.post('/update/:idx', async (req, res) => {
 
     let form = {
-         title   : req.body.title
-        ,content : req.body.content
-        ,name    : req.body.name
-        ,idx     : req.params.idx
+          title   : req.body.title
+        , content : req.body.content
+        , name    : req.body.name
+        , idx     : req.params.idx
     }
 
     dbCrud_mdl.update(form);

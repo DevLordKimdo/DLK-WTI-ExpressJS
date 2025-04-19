@@ -23,7 +23,7 @@ let MemOption;
 if(dbConfig.memory === true) { // 메모리 모드
   MemOption = ':memory:';
 } else { // 파일모드
-  MemOption = global.dbfilePath;
+  MemOption = global.dbFilePath;
 }
 
 const db    = sqlite3(MemOption, dbOption);

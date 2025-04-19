@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fio Crud Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table>
+	    <colgroup> 
+	    	<col style="width: 10%;"/>
+	        <col style="width: 60%;"/>
+	        <col style="width: 10%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>파일이름</th>
+		        <th>확장자</th>
+		        <th>파일크기(byte)</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+			<% list.forEach((list, idx) => { %>
+				<tr>
+					<td><%= list.listNo %></td>
+					<td><a href="/fio/crud/basic/read/<%= list.name %>"><%= list.name %></a></td>
+					<td><%= list.extension %></td>
+					<td><%= list.size %></td>
+				</tr>
+			<% }); %>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<td><a href="/fio/crud/basic/create"><button>글작성</button></a></td>
+			</tr>
+	    </tfoot>
+	</table>
+</body>
+</html>

@@ -35,5 +35,6 @@ app.use('/'                      , require(global.rootPath + '/routes/main/main_
 app.use('/db/crud/basic'         , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_rts'));
 app.use('/fio/crud/basic'        , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_rts'));
 app.use('/fe/form/input-disable' , require(global.rootPath + '/routes/fe/form/inputdisable/feFormInputdisable_rts.js'));
+app.use('/fe/form/row-submit'    , require(global.rootPath + '/routes/fe/form/rowsubmit/feFormRowsubmit_rts.js'));
 
 app.listen(svrPort);

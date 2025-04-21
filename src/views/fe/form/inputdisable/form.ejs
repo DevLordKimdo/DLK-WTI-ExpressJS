@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fe Form Inputdisble Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<form action="/fe/form/input-disable/submit" method="post">
+		<H2>Input Text</H2>
+		<input type="text" name="textNormal" value="Normal"><br>
+		<input type="text" name="textReadonly" value="Readonly" readonly><br>
+		<input type="text" name="textDisabled" value="Disabled" disabled><br>
+		<!-- 입력값이 없으면 경고메세지가 뜨는 태그 옵션 -->
+		<input type="text" name="textRequired" value="" placeholder="Required" required><br>
+		<input type="hidden" name="textHidden" value="Hidden"><br>
+		
+		<H2>CheckBox</H2>
+		<div>Normal 1 : <input type="checkbox" name="checkboxNormal1"></div> <!-- 따로 value 값을 지정 안했을 경우 기본 값으로 on이 전달됨 -->
+		<div>Normal 2 : <input type="checkbox" name="checkboxNormal2" value="true"></div>
+		<!-- 노드JS 경우 두개의 같은 name 값을 가진 input 태그 값을 받으면 두개 값을 하나의 배열로 전송함. -->
+		<!-- 자바 방식의 같은 name 값을 가진 태그를 전송하는 방법은 사실상 사용 불가능 -->
+		<div>Normal 3 : <input type="checkbox" name="checkboxNormal3" value="true"><input type="hidden" name="checkboxNormal3" value="false"></div>
+		<div>Readonly True  : <input type="checkbox" name="checkboxReadonlyTrue" value="true" onclick="return false" checked></div>
+		<div>Readonly False : <input type="checkbox" name="checkboxReadonlyFalse" value="true" onclick="return false"></div>
+		<div>Readonly(Style) True  : <input type="checkbox" name="" value="true" onclick="return false" checked style="opacity: 0.5; cursor: not-allowed; accent-color: gray"></div>
+		<div>Readonly(Style) False : <input type="checkbox" name="" value="true" onclick="return false" style="opacity: 0.5; cursor: not-allowed; accent-color: gray"></div>
+		<div>Disabled True  : <input type="checkbox" name="checkboxDisabledTrue" value="true" checked Disabled></div>
+		<div>Disabled False : <input type="checkbox" name="checkboxDisabledFalse" value="true" Disabled></div>
+		
+		<H2>Select</H2>
+		<div>Normal : 
+			<select name="selectNormal">
+				<option value="A" selected>A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</div>
+		<div>Readonly : 
+			<select name="selectReadonly" onChange="this.selectedIndex = this.initialSelect;">
+				<option value="A" selected>A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</div>
+		<div>Readonly(Style) : 
+			<select name="" onChange="this.selectedIndex = this.initialSelect;" style="opacity: 0.5;">
+				<option value="A" selected>A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</div>
+		<div>Disabled : 
+			<select name="selectDisabled" disabled>
+				<option value="A" selected>A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</div>
+		
+		<H2>Radio</H2>
+		<div>Normal
+			<input type="radio" name="radioNormal" value="A" checked>
+			<input type="radio" name="radioNormal" value="B">
+			<input type="radio" name="radioNormal" value="C">
+		</div>
+		<div>Readonly
+			<input type="radio" name="radioReadonly" value="A" onclick="return false" checked>
+			<input type="radio" name="radioReadonly" value="B" onclick="return false">
+			<input type="radio" name="radioReadonly" value="C" onclick="return false">
+		</div>
+		<div>Readonly(style)
+			<input type="radio" name="" value="A" onclick="return false" style="opacity: 0.5; cursor: not-allowed; accent-color: gray" checked>
+			<input type="radio" name="" value="B" onclick="return false" style="opacity: 0.5; cursor: not-allowed; accent-color: gray">
+			<input type="radio" name="" value="C" onclick="return false" style="opacity: 0.5; cursor: not-allowed; accent-color: gray">
+		</div>
+		<div>Disabled
+			<input type="radio" name="radioDisabled" value="A" checked Disabled>
+			<input type="radio" name="radioDisabled" value="B" Disabled>
+			<input type="radio" name="radioDisabled" value="C" Disabled>
+		</div>
+		
+		<H2>TextArea</H2>
+		<textarea name="textareaNormal">Normal</textarea><br>
+		<textarea name="textareaReadonly" readonly>Readonly</textarea><br>
+		<textarea name="textareaDisabled" disabled>Disabled</textarea><br>
+		
+		<H2>전송</H2>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>

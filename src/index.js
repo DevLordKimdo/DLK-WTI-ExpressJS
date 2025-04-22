@@ -2,6 +2,7 @@ const express     = require('express');
 const config      = require('config');
 const path        = require('path');
 const app         = express();
+const session     = require('express-session');
 
 // global 경로 설정
 global.rootPath   = path.resolve('src');
@@ -31,7 +32,16 @@ app.use(express.json());
 // URL 인코딩된 요청 본문을 파싱
 app.use(express.urlencoded({extended: false}));
 
+// 세션 설정
+app.use(session({
+    secret            : '1234', // 세션 암호화 키
+    resave            : false,  // 세션이 변경되지 않았더라도 다시 저장할지 여부
+    saveUninitialized : false,  // 초기화되지 않은 세션을 저장할지 여부
+}));
+
+// 라우팅 매핑
 app.use('/'                      , require(global.rootPath + '/routes/main/main_rts'));
+app.use('/be/http/prg-pattern'   , require(global.rootPath + '/routes/be/http/prgpattern/beHttpPrgpattern_rts'));
 app.use('/db/crud/basic'         , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_rts'));
 app.use('/fio/crud/basic'        , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_rts'));
 app.use('/fe/form/input-disable' , require(global.rootPath + '/routes/fe/form/inputdisable/feFormInputdisable_rts.js'));

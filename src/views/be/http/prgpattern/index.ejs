@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Http PRGPattern Index</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<h2>Submit Post</h2>
+	<form name="form">
+		<input type="text" name="value">
+	</form>
+	<button onclick="fn_submitPost()">SubmitPost</button>
+	<div>
+		value : <span><%= value %></span>
+	</div>
+</body>
+<script>
+	function fn_submitPost() {
+		document.form.action = "/be/http/prg-pattern/submit-post";
+		document.form.method = "POST";
+		document.form.submit();
+	}
+</script>
+</html>

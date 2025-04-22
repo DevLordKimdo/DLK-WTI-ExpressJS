@@ -3,6 +3,7 @@ const config      = require('config');
 const path        = require('path');
 const app         = express();
 const session     = require('express-session');
+const SQLiteStore = require('connect-sqlite3')(session);
 
 // global 경로 설정
 global.rootPath   = path.resolve('src');
@@ -37,6 +38,10 @@ app.use(session({
     secret            : '1234', // 세션 암호화 키
     resave            : false,  // 세션이 변경되지 않았더라도 다시 저장할지 여부
     saveUninitialized : false,  // 초기화되지 않은 세션을 저장할지 여부
+    store: new SQLiteStore({
+        db: ':memory:', // 메모리 모드 지정
+        table: 'sessions' // 테이블 이름 (선택사항)
+    })
 }));
 
 // 라우팅 매핑

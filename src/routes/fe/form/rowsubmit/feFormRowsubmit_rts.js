@@ -31,7 +31,9 @@ router.get('/form-fetch', async (req, res) => {
 
 router.post('/submit-fetch', async (req, res) => {
 
-    console.log(req.body.list);
+    let list = req.body.list;
+
+    console.log(list);
     res.send("Success");
 });
 

@@ -20,7 +20,19 @@ router.post('/submit', async (req, res) => {
             , content : listContent[i]
         });
     }
+    console.log(list);
     res.redirect('/fe/form/row-submit/form');
+});
+
+router.get('/form-fetch', async (req, res) => {
+
+    res.render('fe/form/rowsubmit/formfetch', {});
+});
+
+router.post('/submit-fetch', async (req, res) => {
+
+    console.log(req.body.list);
+    res.send("Success");
 });
 
 module.exports = router;

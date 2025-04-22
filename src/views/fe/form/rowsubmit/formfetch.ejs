@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fe Form Rowsubmit Form</title>
+    <title>Fe Form Rowsubmit Formfetch</title>
 </head>
 <link rel="stylesheet" href="/css/styles.css">
 <body>
@@ -18,7 +18,9 @@
 		    </colgroup>
 			<thead>
 			    <tr>
-			        <th><button type="button" onclick="fn_submit()">전송</button></th>
+			        <th>
+			        	<button type="button" onclick="fn_submitJson()">전송(Json)</button>
+			        </th>
 			        <th>제목</th>
 			        <th>이름</th>
 			        <th>내용</th>
@@ -53,36 +55,16 @@
 			fn_addRow();
 		}
 	} auto_initializationRow();
-	
-/*
-	function fn_addRow() {
-		// 구현방법 1 insertAdjacentHTML 을 사용함
-		// 장점 : 구현이 간단하고 쉬움. replace 로 특정 키워드를 모두 치환
-		// 단점 : 새로운 행의 요소들에 대한 접근이 어려움. 스타일 태그를 수정하려고 정규식을 써야한다.
-		let newRow = document.querySelector('.trTemplate').outerHTML;
-		let tbodyMain = document.querySelector('.tbodyMain');
-
-		newRow = newRow.replace('class="trTemplate"', 'class="addRow"');
-		newRow = newRow.replace(/style="display:\s*none;?"/i, '');
-		newRow = newRow.replace(/Queue/g, Queue);
-		Queue = Queue + 1;
-		
-		tbodyMain.insertAdjacentHTML("beforeend", newRow);
-	}
-*/
 
 	function fn_addRow() {
-		// 구현방법 2 outerHTML 을 이용해 템플릿을 생성 후 해당 템플렛이 값을 직접 할당 (추천)
-		// 장점 : 각 요소에 직접 접근할 수 있어 더욱 유연성인 높음. 코드 유지보수 또한 쉬움
-		// 단점 : 코드가 다소 복잡하고 길어짐
-
+		// 구현방법 2 채택
 		let rowTemplate = document.querySelector('.trTemplate').outerHTML;
 		let tableBody = document.querySelector('.tbodyMain');
 		let newRow = document.createElement('tr');
 		newRow.className = 'newRow'; // 클래스 이름 할당
 		newRow.id = "tr"+Queue; //id 값 할당
 		newRow.innerHTML = rowTemplate;
-		
+				
 		// 각각 항목들에 대한 순차번호 값 할당
 		newRow.querySelector('.num').textContent=Queue;
 	    newRow.querySelector('#titleQueue').id="title"+Queue;
@@ -90,64 +72,21 @@
 	    newRow.querySelector('#contentQueue').id="content"+Queue;
 	    newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
 	    newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
-	    
+	    	    
 	    Queue = Queue + 1;
 		
 		tableBody.appendChild(newRow);
 	}
-
-/*
-	function fn_addRow() {
-		// 구현방법 3 cloneNode 를 사용하여 태그의 모든 요소들을 그대로 복제 한 다음 복제된 요소들의 값을 수정
-		// 장점 : 복제하는 방식이라 기존 행의 구조를 그대로 유지.
-		// 단점 : 그런데 복제해서 다시 값 할당할꺼면 뭣하러 쓰는지?
 		
-	    let newRow = document.querySelector('.trTemplate').cloneNode(true);
-		let tableBody = document.querySelector('.tbodyMain');
-		newRow.className = 'newRow'; // 클래스 이름 할당
-		
-		newRow.id = "tr"+Queue; // id 값 할당
-		newRow.style.display = "";
-		newRow.querySelector('.num').textContent=Queue;
-		newRow.querySelector('#titleQueue').id="title"+Queue;
-		newRow.querySelector('#nameQueue').id="name"+Queue;
-		newRow.querySelector('#contentQueue').id="content"+Queue;
-		newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
-		newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
-	    
-	    Queue = Queue + 1;
-	    
-		tableBody.appendChild(newRow);
-	}
-*/
-	
 	// 태그를 완전히 삭제
 	function fn_deleteRow(num) {
-		
 		// 해당 태그를 완전히 삭제하는 방식
 		let rowToDelete = document.getElementById('tr'+num);
-		if (rowToDelete) {
-			// 태그 삭제
-			rowToDelete.parentNode.removeChild(rowToDelete);
-		}
-		
-		// 해당 태그를 숨기는 방식
-		/*
-		let rowToHide = document.getElementById('tr'+num);
-		if (rowToHide) {
-			
-			// input 태그에 입력된 값들을 모두 삭제
-			document.getElementById('title' + num).value = '';
-			nameInput = document.getElementById('name' + num).value = '';
-			contentTextarea = document.getElementById('content' + num).value = '';
-
-			// 태그 숨김처리
-			rowToHide.style.display = 'none';
-		}
-		*/
+		// 태그 삭제
+		if (rowToDelete) { rowToDelete.parentNode.removeChild(rowToDelete); }
 	}
 	
-	// 방식 2를 기반으로 복사 기능 구현
+	// 복사 기능 구현
 	function fn_copyRow(num) {
 		let rowTemplate = document.querySelector('.trTemplate').outerHTML;
 		let tableBody = document.querySelector('.tbodyMain');
@@ -173,16 +112,28 @@
 		
 		tableBody.appendChild(newRow);
 	}
-	
-	function fn_submit() {
-		// 전송 보낼 시 Template 항목들도 같이 전송되는 것을 방지하기 위해 Template 들을 삭제. 필요할떄만 사용함.
-		// 만약 Template 태그가 전송하는 form 태그 안에 있을 경우 아래 코드가 필요함.
-		let trTemplate = document.getElementById('trQueue');
-		trTemplate.parentNode.removeChild(trTemplate);
 		
-		document.form.action = "/fe/form/row-submit/submit";
-		document.form.method = "POST";
-		document.form.submit();
+	function fn_submitJson() {		
+		// Fetch 문으로 전송하기 위한 객체배열 생성
+		let list = [];
+		for(let i = 0; i < document.form.title.length; i++) {
+			list.push({
+		          title   : document.form.title[i].value
+		        , name    : document.form.name[i].value
+		        , content : document.form.content[i].value
+			});
+		}
+		
+		// JSON 데이터로 전송하기
+		fetch('/fe/form/row-submit/submit-fetch', {
+		    method: 'POST',
+		    headers: { 'Content-Type': 'application/json' },
+		    body: JSON.stringify({ list: list })
+		})
+		.then(response => response.text())
+		.then(data => {
+			console.log(data);
+		});
 	}
 
 </script>

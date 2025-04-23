@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Db Form Rowsubmit Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<form name="form">
+		<table>
+		    <colgroup> 
+		    	<col style="width: 10%;"/>
+		        <col style="width: 40%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 10%;"/>
+		    </colgroup>
+			<thead>
+			    <tr>
+			        <th><button type="button" onclick="fn_submit()">전송</button></th>
+			        <th>제목</th>
+			        <th>이름</th>
+			        <th>내용</th>
+			        <th><button type="button" onclick="fn_addRow()">추가</button></th>
+			    </tr>
+		    </thead>
+		    <tbody class="tbodyMain">
+		    </tbody>
+		</table>
+	</form>
+	<!-- hidden -->
+	<table>
+	    <tbody>
+			<tr class="trTemplate" id="trQueue" style="display: none;">
+				<td><span class="num">Queue</span></td>
+				<td><input type="text" name="title" id="titleQueue"></td>
+				<td><input type="text" name="name" id="nameQueue"></td>
+				<td><textarea name="content" id="contentQueue"></textarea></td>
+				<td>
+					<button type="button" id="deleteRow" onclick="fn_deleteRow(Queue)">삭제</button>
+					<button type="button" id="copyRow" onclick="fn_copyRow(Queue)">복사</button>
+				</td>
+		    </tr>
+	    </tbody>
+	</table>
+</body>
+<script>
+	let Queue = 1;
+
+	function auto_initializationRow() {
+		for(i=1; i<4; i++) {
+			fn_addRow();
+		}
+	} auto_initializationRow();
+
+	function fn_addRow() {
+		let rowTemplate = document.querySelector('.trTemplate').outerHTML;
+		let tableBody = document.querySelector('.tbodyMain');
+		let newRow = document.createElement('tr');
+		newRow.className = 'newRow';
+		newRow.id = "tr"+Queue;
+		newRow.innerHTML = rowTemplate;
+		
+		newRow.querySelector('.num').textContent=Queue;
+	    newRow.querySelector('#titleQueue').id="title"+Queue;
+	    newRow.querySelector('#nameQueue').id="name"+Queue;
+	    newRow.querySelector('#contentQueue').id="content"+Queue;
+	    newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
+	    newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
+	    
+	    Queue = Queue + 1;
+		
+		tableBody.appendChild(newRow);
+	}
+
+	function fn_deleteRow(num) {
+		let rowToDelete = document.getElementById('tr'+num);
+		if (rowToDelete) {
+			rowToDelete.parentNode.removeChild(rowToDelete);
+		}
+	}
+	
+	function fn_copyRow(num) {
+		let rowTemplate = document.querySelector('.trTemplate').outerHTML;
+		let tableBody = document.querySelector('.tbodyMain');
+		let newRow = document.createElement('tr');
+		newRow.className = 'newRow';
+		newRow.id = "tr"+Queue;
+		newRow.innerHTML = rowTemplate;
+		
+		newRow.querySelector('.num').textContent=Queue;
+	    newRow.querySelector('#titleQueue').id="title"+Queue;
+	    newRow.querySelector('#nameQueue').id="name"+Queue;
+	    newRow.querySelector('#contentQueue').id="content"+Queue;
+	    newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
+	    newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
+	    
+	    newRow.querySelector('#title'+Queue).value = document.getElementById('title'+num).value;
+	    newRow.querySelector('#name'+Queue).value = document.getElementById('name'+num).value;
+	    newRow.querySelector('#content'+Queue).value = document.getElementById('content'+num).value;
+	    
+	    Queue = Queue + 1;
+		
+		tableBody.appendChild(newRow);
+	}
+	
+	function fn_submit() {
+		let trTemplate = document.getElementById('trQueue');
+		trTemplate.parentNode.removeChild(trTemplate);
+		
+		document.form.action = "/db/form/row-submit/submit";
+		document.form.method = "POST";
+		document.form.submit();
+	}
+
+</script>
+</html>

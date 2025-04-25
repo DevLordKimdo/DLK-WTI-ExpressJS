@@ -136,14 +136,14 @@ INSERT INTO post_board (title , content , name , hit) VALUES ('아인슈타인 �
 INSERT INTO post_board (title , content , name , hit) VALUES ('아인슈타인 어록29' , '노력을 멈출 때까지 실패하는 법이란 없다.' , '알버트 아인슈타인' , '0');
 INSERT INTO post_board (title , content , name , hit) VALUES ('아인슈타인 어록30' , '간단히 설명할 수가 없다면, 당신은 충분히 이해하지 못하고 있는 것이다.' , '알버트 아인슈타인' , '0');
 
--- file_board table
+file_board table
 DROP TABLE IF EXISTS file_board;
 
 CREATE TABLE file_board (
     idx INTEGER PRIMARY KEY AUTOINCREMENT,
-	postidx INTEGER NOT NULL,
-	name TEXT NOT NULL,
-	size INTEGER,
-	seq INTEGER DEFAULT 0,
+    group_idx INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    size INTEGER,
+    seq INTEGER DEFAULT 0,
     datetime TEXT DEFAULT (datetime('now', 'localtime'))
 ) STRICT;

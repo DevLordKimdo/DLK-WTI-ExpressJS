@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fio Board Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table border="1">
+	    <colgroup> 
+	    	<col style="width: 10%;"/>
+	        <col style="width: 45%;"/>
+	    	<col style="width: 15%;"/>
+	        <col style="width: 10%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>그룹번호</th>
+		        <th>파일명</th>
+		        <th>크기</th>
+		        <th>번호</th>
+		        <th>날짜</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+			<% list.forEach((list, idx) => { %>
+				<tr>
+					<% if (list.groupIdx) { %> <td rowspan="<%= list.groupCount %>"><%= list.groupIdx %></td> <% } %>
+					<td><%= list.name %></td>
+					<td><%= list.size %></td>
+					<td><%= list.seq %></td>
+					<td><%= list.datetime %></td>
+				</tr>
+			<% }); %>
+	    </tbody>
+	    <tfoot>
+	    	<tr>
+	    		<td colspan="5">
+					<form action="/fio/board/basic/upload" method="post" enctype="multipart/form-data">
+						<input type="file" name="upload" multiple>
+						<input type="submit" value="다중파일 업로드">
+					</form>
+	    		</td>
+	    	</tr>
+	    </tfoot>
+	</table>
+</body>
+</html>

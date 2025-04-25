@@ -49,6 +49,7 @@ app.use('/'                      , require(global.rootPath + '/routes/main/main_
 app.use('/be/http/prg-pattern'   , require(global.rootPath + '/routes/be/http/prgpattern/beHttpPrgpattern_rts'));
 app.use('/db/crud/basic'         , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_rts'));
 app.use('/db/form/row-submit'    , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_rts.js'));
+app.use('/fio/board/basic'       , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_rts'));
 app.use('/fio/crud/basic'        , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_rts'));
 app.use('/fio/updown/basic'      , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_rts'));
 app.use('/fe/form/input-disable' , require(global.rootPath + '/routes/fe/form/inputdisable/feFormInputdisable_rts.js'));

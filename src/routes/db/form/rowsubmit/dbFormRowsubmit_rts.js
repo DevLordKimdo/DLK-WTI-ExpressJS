@@ -14,10 +14,10 @@ router.post('/submit', async (req, res) => {
     let listContent  = req.body.content;
 
     for(let i = 0; i < listTitle.length; i++) {
-        let form     = {};
-        form.title   = listTitle[i];
-        form.name    = listName[i];
-        form.content = listContent[i];
+        let form         = {};
+            form.title   = listTitle[i];
+            form.name    = listName[i];
+            form.content = listContent[i];
 
         dbCrud_mdl.create(form);
     }

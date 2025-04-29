@@ -9,8 +9,8 @@ const SQLiteStore = require('connect-sqlite3')(session);
 global.rootPath   = path.resolve('src');
 global.viewPath   = path.join(__dirname, 'views');
 
-global.dbConf     = path.join(__dirname, 'db/dbconfig');
-global.dbInitQry  = path.join(__dirname, 'db/startQuery.sql');
+global.dbConf     = path.join(__dirname, '../config/database');
+global.dbInitQry  = path.join(__dirname, '../config/StartQuery.sql');
 global.dbFilePath = path.join('C:/SQL/database.db');
 
 global.fioPath    = path.join('C:/fio');

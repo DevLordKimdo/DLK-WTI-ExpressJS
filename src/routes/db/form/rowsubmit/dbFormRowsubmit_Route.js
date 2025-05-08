@@ -1,6 +1,6 @@
 const express        = require('express');
 const router         = express.Router();
-const dbCrud_mdl     = require(global.rootPath + '/models/dbCrud_mdl');
+const dbCrud_Model     = require(global.rootPath + '/models/dbCrud_Model');
 
 router.get(['/','/form'], async (req, res) => {
 
@@ -19,7 +19,7 @@ router.post('/submit', async (req, res) => {
             form.name    = listName[i];
             form.content = listContent[i];
 
-        dbCrud_mdl.create(form);
+        dbCrud_Model.create(form);
     }
 
     res.redirect('/template' + '/db/form/row-submit/form');

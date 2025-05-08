@@ -45,14 +45,14 @@ app.use(session({
 }));
 
 // 라우팅 매핑
-app.use('/'                               , require(global.rootPath + '/routes/main/main_rts'));
-app.use('/template/be/http/prg-pattern'   , require(global.rootPath + '/routes/be/http/prgpattern/beHttpPrgpattern_rts'));
-app.use('/template/db/crud/basic'         , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_rts'));
-app.use('/template/db/form/row-submit'    , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_rts.js'));
-app.use('/template/fio/board/basic'       , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_rts'));
-app.use('/template/fio/crud/basic'        , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_rts'));
-app.use('/template/fio/updown/basic'      , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_rts'));
-app.use('/template/fe/form/input-disable' , require(global.rootPath + '/routes/fe/form/inputdisable/feFormInputdisable_rts.js'));
-app.use('/template/fe/form/row-submit'    , require(global.rootPath + '/routes/fe/form/rowsubmit/feFormRowsubmit_rts.js'));
+app.use('/'                               , require(global.rootPath + '/routes/main/main_Route'));
+app.use('/template/be/http/prg-pattern'   , require(global.rootPath + '/routes/be/http/prgpattern/beHttpPrgpattern_Route'));
+app.use('/template/db/crud/basic'         , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
+app.use('/template/db/form/row-submit'    , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route.js'));
+app.use('/template/fio/board/basic'       , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
+app.use('/template/fio/crud/basic'        , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
+app.use('/template/fio/updown/basic'      , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
+app.use('/template/fe/form/input-disable' , require(global.rootPath + '/routes/fe/form/inputdisable/feFormInputdisable_Route.js'));
+app.use('/template/fe/form/row-submit'    , require(global.rootPath + '/routes/fe/form/rowsubmit/feFormRowsubmit_Route.js'));
 
 app.listen(svrPort);

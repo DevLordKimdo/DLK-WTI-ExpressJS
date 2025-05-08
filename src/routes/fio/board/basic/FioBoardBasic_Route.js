@@ -1,7 +1,7 @@
 const express       = require('express');
 const router        = express.Router();
 const multer        = require('multer');
-const fioBoard_mdl  = require(global.rootPath + '/models/fioBoard_mdl');
+const fioBoard_Model  = require(global.rootPath + '/models/fioBoard_Model');
 
 // multer 설정
 const storage = multer.diskStorage({
@@ -18,7 +18,7 @@ router.get(['/','/list'], async (req, res) => {
     
     let prevGroupIdx;
     let currentGroupIdx;
-    let list = fioBoard_mdl.list();
+    let list = fioBoard_Model.list();
     
     // 객체배열의 key 이름을 변경하는 작업. group_idx -> groupIdx , group_count -> groupCount
     list = list.map(item => {
@@ -45,7 +45,7 @@ router.get(['/','/list'], async (req, res) => {
 
 router.post('/upload', upload.array('upload','20'), async (req, res) => {
 
-    let newGroupIdx = fioBoard_mdl.newGroupIdx();
+    let newGroupIdx = fioBoard_Model.newGroupIdx();
 
     // 순차적으로 DB에 INSERT
     for(let i = 0; i < req.files.length; i++) {
@@ -54,7 +54,7 @@ router.post('/upload', upload.array('upload','20'), async (req, res) => {
             uploadList.name     = req.files[i].originalname;
             uploadList.size     = req.files[i].size;
             uploadList.seq      = i+1;
-        fioBoard_mdl.upload(uploadList);
+        fioBoard_Model.upload(uploadList);
     }
 
     res.redirect('/template' + '/fio/board/basic/list');

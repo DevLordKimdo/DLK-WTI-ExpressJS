@@ -1,10 +1,10 @@
 const express        = require('express');
 const router         = express.Router();
-const dbCrud_mdl     = require(global.rootPath + '/models/dbCrud_mdl');
+const dbCrud_Model     = require(global.rootPath + '/models/dbCrud_Model');
 
 router.get(['/','/list'], async (req, res) => {
 
-    let list = dbCrud_mdl.list();
+    let list = dbCrud_Model.list();
 
     res.render('db/crud/basic/list', {list : list});
 });
@@ -22,7 +22,7 @@ router.post('/create', async (req, res) => {
         , name    : req.body.name
     }
 
-    dbCrud_mdl.create(form);
+    dbCrud_Model.create(form);
     
     res.redirect('/template' + '/db/crud/basic/list');
 });
@@ -31,8 +31,8 @@ router.get('/read/:idx', async (req, res) => {
 
     let idx = req.params.idx;
 
-    dbCrud_mdl.updateHit(idx);
-    let read = dbCrud_mdl.read(idx);
+    dbCrud_Model.updateHit(idx);
+    let read = dbCrud_Model.read(idx);
 
     res.render('db/crud/basic/read', {read : read});
 });
@@ -46,7 +46,7 @@ router.post('/update/:idx', async (req, res) => {
         , idx     : req.params.idx
     }
 
-    dbCrud_mdl.update(form);
+    dbCrud_Model.update(form);
 
     res.redirect('/template' + '/db/crud/basic/read/' + form.idx);
 });
@@ -55,7 +55,7 @@ router.get('/delete/:idx', async (req, res) => {
 
     let idx = req.params.idx;
 
-    dbCrud_mdl.deletePost(idx);
+    dbCrud_Model.deletePost(idx);
 
     res.redirect('/template' + '/db/crud/basic/list');
 });

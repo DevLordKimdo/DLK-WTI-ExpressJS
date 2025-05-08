@@ -14,7 +14,7 @@ router.post('/submit-post', async (req, res) => {
     let value = req.body.value;
     req.session.temp = value;
 
-    res.redirect('/be/http/prg-pattern/index');
+    res.redirect('/template' + '/be/http/prg-pattern/index');
 });
 
 module.exports = router;

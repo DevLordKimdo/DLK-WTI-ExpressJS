@@ -21,7 +21,7 @@ router.post('/submit', async (req, res) => {
         });
     }
     console.log(list);
-    res.redirect('/fe/form/row-submit/form');
+    res.redirect('/template' + '/fe/form/row-submit/form');
 });
 
 router.get('/form-fetch', async (req, res) => {

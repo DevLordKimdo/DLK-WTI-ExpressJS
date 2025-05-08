@@ -44,7 +44,7 @@ router.post('/submit', async (req, res) => {
     console.log( "textarea Readonly Value : " + req.body.textareaReadonly );
     console.log( "textarea Disabled Value : " + req.body.textareaDisabled );
 
-    res.redirect('/fe/form/input-disable/form');
+    res.redirect('/template' + '/fe/form/input-disable/form');
 });
 
 module.exports = router;

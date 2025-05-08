@@ -26,7 +26,7 @@
 			<% list.forEach((list, idx) => { %>
 				<tr>
 					<td><%= list.listNo %></td>
-					<td><a href="/fio/crud/basic/read/<%= list.name %>"><%= list.name %></a></td>
+					<td><a href="/template/fio/crud/basic/read/<%= list.name %>"><%= list.name %></a></td>
 					<td><%= list.extension %></td>
 					<td><%= list.size %></td>
 				</tr>
@@ -34,7 +34,7 @@
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/fio/crud/basic/create"><button>글작성</button></a></td>
+				<td><a href="/template/fio/crud/basic/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>

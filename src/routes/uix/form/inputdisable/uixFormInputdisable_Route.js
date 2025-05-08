@@ -3,7 +3,7 @@ const router         = express.Router();
 
 router.get(['/','/form'], async (req, res) => {
 
-    res.render('fe/form/inputdisable/form', {});
+    res.render('uix/form/inputdisable/form', {});
 });
 
 router.post('/submit', async (req, res) => {
@@ -44,7 +44,7 @@ router.post('/submit', async (req, res) => {
     console.log( "textarea Readonly Value : " + req.body.textareaReadonly );
     console.log( "textarea Disabled Value : " + req.body.textareaDisabled );
 
-    res.redirect('/template' + '/fe/form/input-disable/form');
+    res.redirect('/template' + '/uix/form/input-disable/form');
 });
 
 module.exports = router;

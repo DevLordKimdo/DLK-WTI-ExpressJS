@@ -3,7 +3,7 @@ const router         = express.Router();
 
 router.get(['/','/form'], async (req, res) => {
 
-    res.render('fe/form/rowsubmit/form', {});
+    res.render('uix/form/rowsubmit/form', {});
 });
 
 router.post('/submit', async (req, res) => {
@@ -21,12 +21,12 @@ router.post('/submit', async (req, res) => {
         });
     }
     console.log(list);
-    res.redirect('/template' + '/fe/form/row-submit/form');
+    res.redirect('/template' + '/uix/form/row-submit/form');
 });
 
 router.get('/form-fetch', async (req, res) => {
 
-    res.render('fe/form/rowsubmit/formfetch', {});
+    res.render('uix/form/rowsubmit/formfetch', {});
 });
 
 router.post('/submit-fetch', async (req, res) => {

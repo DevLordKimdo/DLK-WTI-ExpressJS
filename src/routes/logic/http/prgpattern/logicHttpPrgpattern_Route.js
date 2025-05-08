@@ -6,7 +6,7 @@ router.get(['/','/index'], async (req, res) => {
     let value = req.session.temp;
     delete req.session.temp;
 
-    res.render('be/http/prgpattern/index', {value : value});
+    res.render('logic/http/prgpattern/index', {value : value});
 });
 
 router.post('/submit-post', async (req, res) => {
@@ -14,7 +14,7 @@ router.post('/submit-post', async (req, res) => {
     let value = req.body.value;
     req.session.temp = value;
 
-    res.redirect('/template' + '/be/http/prg-pattern/index');
+    res.redirect('/template' + '/logic/http/prg-pattern/index');
 });
 
 module.exports = router;

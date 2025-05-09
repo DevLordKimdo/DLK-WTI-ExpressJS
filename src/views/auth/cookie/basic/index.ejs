@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Cookie Basic</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<div>
+		<h2>Request Backend</h2>
+		<button onclick="fn_requestBackend()">쿠키 발행</button>
+	</div>
+	<div>
+		<h2>Request Frontend</h2>
+		<button onclick="fn_requestFrontend()">쿠키 발행</button>
+	</div>
+	<div>
+		<h2>Check Cookie</h2>
+		<button onclick="fn_checkCookie()">쿠키 확인</button>
+	</div>
+</body>
+<script>
+    function fn_requestBackend() {
+		location.href = "/tmpl/auth/cookie/basic/request-backend";
+	}
+	
+	function fn_requestFrontend() {
+	    var date = new Date();
+	    date.setTime(date.getTime() + (3600 * 1000)); // (초 * 나노시간)
+		
+		let cookieName = "frontendCookie";
+		let value      = "value";
+		let expires    = "expires=" + date.toUTCString();
+		//let expires    = "expires=" + date.toLocaleString(); // 거주하고 있는 국가 시간으로 설정.
+		
+		document.cookie = cookieName + "=" + (value || "") + ";" + expires + ";" + "path=/";
+	}
+	
+	function fn_checkCookie() {
+		location.href = "/tmpl/auth/cookie/basic/check-cookie";
+	}
+</script>
+</html>

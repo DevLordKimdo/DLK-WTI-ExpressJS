@@ -5,6 +5,7 @@
     "better-sqlite3": "^11.9.1",
     "config": "^3.3.12",
     "connect-sqlite3": "^0.9.15",
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",

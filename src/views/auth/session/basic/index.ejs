@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Session Basic</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<div>
+        <h2>Session Request</h2>
+		<button onclick="fn_requestSession()">세션 요청</button>
+	</div>
+	<div>
+        <h2>Check Session</h2>
+		<button onclick="fn_checkSession()">세션 확인</button>
+	</div>
+	<div>
+        <h2>Delete Session</h2>
+		<button onclick="fn_deleteSession()">세션 삭제</button>
+	</div>
+</body>
+<script>
+
+	function fn_requestSession() {
+		location.href = "/tmpl/auth/session/basic/request-session";
+	}
+	
+	function fn_checkSession() {
+		location.href = "/tmpl/auth/session/basic/check-session";
+	}
+
+	function fn_deleteSession() {
+		location.href = "/tmpl/auth/session/basic/delete-session";
+	}
+</script>
+</html>

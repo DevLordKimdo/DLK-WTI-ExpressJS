@@ -1,9 +1,10 @@
-const express     = require('express');
-const config      = require('config');
-const path        = require('path');
-const app         = express();
-const session     = require('express-session');
-const SQLiteStore = require('connect-sqlite3')(session);
+const express      = require('express');
+const config       = require('config');
+const path         = require('path');
+const app          = express();
+const session      = require('express-session');
+const SQLiteStore  = require('connect-sqlite3')(session);
+const cookieParser = require('cookie-parser');
 
 // global 경로 설정
 global.rootPath   = path.resolve('src');
@@ -33,6 +34,9 @@ app.use(express.json());
 // URL 인코딩된 요청 본문을 파싱
 app.use(express.urlencoded({extended: false}));
 
+// 쿠키 설정
+app.use(cookieParser());
+
 // 세션 설정
 app.use(session({
     secret            : '1234', // 세션 암호화 키
@@ -45,8 +49,10 @@ app.use(session({
 }));
 
 // 라우팅 매핑
-app.use('/'                                , require(global.rootPath + '/routes/main/main_Route'));
+app.use('/'                            , require(global.rootPath + '/routes/main/main_Route'));
 app.use('/tmpl/logic/http/prg-pattern' , require(global.rootPath + '/routes/logic/http/prgpattern/logicHttpPrgpattern_Route'));
+app.use('/tmpl/auth/cookie/basic'      , require(global.rootPath + '/routes/auth/cookie/basic/authCookieBasic_Route'));
+app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth/session/basic/authSessionBasic_Route'));
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
 app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route.js'));
 app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
@@ -54,5 +60,6 @@ app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/
 app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
 app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route.js'));
 app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
+
 
 app.listen(svrPort);

@@ -7,13 +7,13 @@
 </head>
 <link rel="stylesheet" href="/css/styles.css">
 <body>
-	<form action="/template/fio/crud/basic/update/<%= read.name %>" method="post">
+	<form action="/tmpl/fio/crud/basic/update/<%= read.name %>" method="post">
 		<input type="hidden" name="preName" value="<%= read.name %>"/>
 		<div>제목 : <input type="text" name="name" value="<%= read.name %>"/></div>
 		<div>내용 : <textarea name="content"><%= read.content %></textarea></div>
 		<div><input type="submit" value="수정"></div>
 	</form>
-		<div><a href="/template/fio/crud/basic/list"><button>목록</button></a></div>
-		<div><a href="/template/fio/crud/basic/delete/<%= read.name %>"><button>삭제</button></a></div>
+		<div><a href="/tmpl/fio/crud/basic/list"><button>목록</button></a></div>
+		<div><a href="/tmpl/fio/crud/basic/delete/<%= read.name %>"><button>삭제</button></a></div>
 </body>
 </html>

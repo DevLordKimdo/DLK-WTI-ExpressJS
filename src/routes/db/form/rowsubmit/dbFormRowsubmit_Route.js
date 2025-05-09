@@ -22,7 +22,7 @@ router.post('/submit', async (req, res) => {
         dbCrud_Model.create(form);
     }
 
-    res.redirect('/template' + '/db/form/row-submit/form');
+    res.redirect('/tmpl' + '/db/form/row-submit/form');
 });
 
 module.exports = router;

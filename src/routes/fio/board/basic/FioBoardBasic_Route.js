@@ -57,7 +57,7 @@ router.post('/upload', upload.array('upload','20'), async (req, res) => {
         fioBoard_Model.upload(uploadList);
     }
 
-    res.redirect('/template' + '/fio/board/basic/list');
+    res.redirect('/tmpl' + '/fio/board/basic/list');
 });
 
 module.exports = router;

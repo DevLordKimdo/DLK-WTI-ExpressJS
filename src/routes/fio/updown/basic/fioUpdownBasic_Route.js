@@ -42,12 +42,12 @@ router.get('/sample-download', async (req, res) => {
 
 router.post('/single-upload', upload.single('singleUpload'), async (req, res) => {
     
-    res.redirect('/template' + '/fio/updown/basic/form');
+    res.redirect('/tmpl' + '/fio/updown/basic/form');
 });
 
 router.post('/multi-upload', upload.array('multiUpload','20'), async (req, res) => {
     // 최대 20개 업로드 허용
-    res.redirect('/template' + '/fio/updown/basic/form');
+    res.redirect('/tmpl' + '/fio/updown/basic/form');
 });
 
 router.post('/delete-target', async (req, res) => {
@@ -66,7 +66,7 @@ router.post('/delete-target', async (req, res) => {
         console.log(deleteTarget + ' 파일이 존재하지 않습니다.');
     }
 
-    res.redirect('/template' + '/fio/updown/basic/form');
+    res.redirect('/tmpl' + '/fio/updown/basic/form');
 });
 
 router.get('/delete-all', async (req, res) => {
@@ -76,7 +76,7 @@ router.get('/delete-all', async (req, res) => {
         await fsPromises.rm(global.fioPath + '/' + file);
     }
 
-    res.redirect('/template' + '/fio/updown/basic/form');
+    res.redirect('/tmpl' + '/fio/updown/basic/form');
 });
 
 module.exports = router;

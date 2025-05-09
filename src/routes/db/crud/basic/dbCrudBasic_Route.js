@@ -24,7 +24,7 @@ router.post('/create', async (req, res) => {
 
     dbCrud_Model.create(form);
     
-    res.redirect('/template' + '/db/crud/basic/list');
+    res.redirect('/tmpl' + '/db/crud/basic/list');
 });
 
 router.get('/read/:idx', async (req, res) => {
@@ -48,7 +48,7 @@ router.post('/update/:idx', async (req, res) => {
 
     dbCrud_Model.update(form);
 
-    res.redirect('/template' + '/db/crud/basic/read/' + form.idx);
+    res.redirect('/tmpl' + '/db/crud/basic/read/' + form.idx);
 });
 
 router.get('/delete/:idx', async (req, res) => {
@@ -57,7 +57,7 @@ router.get('/delete/:idx', async (req, res) => {
 
     dbCrud_Model.deletePost(idx);
 
-    res.redirect('/template' + '/db/crud/basic/list');
+    res.redirect('/tmpl' + '/db/crud/basic/list');
 });
 
 module.exports = router;

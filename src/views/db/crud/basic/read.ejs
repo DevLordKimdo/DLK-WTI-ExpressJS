@@ -7,7 +7,7 @@
 </head>
 <link rel="stylesheet" href="/css/styles.css">
 <body>
-	<form action="/template/db/crud/basic/update/<%= read.idx %>" method="post">
+	<form action="/tmpl/db/crud/basic/update/<%= read.idx %>" method="post">
 		<div>번호 : <%= read.idx %></div>
 		<div>날짜 : <%= read.datetime %></div>
 		<div>조회 : <%= read.hit %></div>
@@ -16,7 +16,7 @@
 		<div>내용 : <textarea name="content"><%= read.content %></textarea></div>
 		<div><input type="submit" value="수정"></div>
 	</form>
-		<div><a href="/template/db/crud/basic/list"><button>목록</button></a></div>
-		<div><a href="/template/db/crud/basic/delete/<%= read.idx %>"><button>삭제</button></a></div>
+		<div><a href="/tmpl/db/crud/basic/list"><button>목록</button></a></div>
+		<div><a href="/tmpl/db/crud/basic/delete/<%= read.idx %>"><button>삭제</button></a></div>
 </body>
 </html>

@@ -83,7 +83,7 @@ router.post('/update/:preName', async (req, res) => {
         await fsPromises.rename(filePath, newFilePath);
     }
 
-    res.redirect('/template' + '/fio/crud/basic/read/' + name);
+    res.redirect('/tmpl' + '/fio/crud/basic/read/' + name);
 });
 
 router.get('/delete/:name', async (req, res) => {
@@ -94,7 +94,7 @@ router.get('/delete/:name', async (req, res) => {
     // 파일 삭제
     await fsPromises.rm(filePath);
 
-    res.redirect('/template' + '/fio/crud/basic/list');
+    res.redirect('/tmpl' + '/fio/crud/basic/list');
 });
 
 module.exports = router;

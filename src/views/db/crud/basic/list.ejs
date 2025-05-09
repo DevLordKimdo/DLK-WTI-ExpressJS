@@ -28,7 +28,7 @@
 			<% list.forEach((list, idx) => { %>
 				<tr>
 					<td><%= list.idx %></td>
-					<td><a href="/template/db/crud/basic/read/<%= list.idx %>"><%= list.title %></a></td>
+					<td><a href="/tmpl/db/crud/basic/read/<%= list.idx %>"><%= list.title %></a></td>
 					<td><%= list.name %></td>
 					<td><%= list.datetime %></td>
 					<td><%= list.hit %></td>
@@ -37,7 +37,7 @@
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/template/db/crud/basic/create"><button>글작성</button></a></td>
+				<td><a href="/tmpl/db/crud/basic/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>

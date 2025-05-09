@@ -46,13 +46,13 @@ app.use(session({
 
 // 라우팅 매핑
 app.use('/'                                , require(global.rootPath + '/routes/main/main_Route'));
-app.use('/template/logic/http/prg-pattern' , require(global.rootPath + '/routes/logic/http/prgpattern/logicHttpPrgpattern_Route'));
-app.use('/template/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
-app.use('/template/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route.js'));
-app.use('/template/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
-app.use('/template/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
-app.use('/template/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
-app.use('/template/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route.js'));
-app.use('/template/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
+app.use('/tmpl/logic/http/prg-pattern' , require(global.rootPath + '/routes/logic/http/prgpattern/logicHttpPrgpattern_Route'));
+app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
+app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route.js'));
+app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
+app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
+app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
+app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route.js'));
+app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
 
 app.listen(svrPort);

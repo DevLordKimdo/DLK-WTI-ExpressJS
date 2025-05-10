@@ -128,13 +128,14 @@ const updateMulti = (params) => {
             qry += "      , name     =   :name               ";
             qry += "      , content  =   :content            ";
             qry += "      , hit      =   :hit                ";
-            qry += "  WHERE idx     IN  (" + params.idx + ") ";
+            qry += "  WHERE idx     IN   (SELECT value FROM json_each(:idx)) ";
 
             db.prepare(qry).run({
                  title   : params.title
                 ,name    : params.name
                 ,content : params.content
                 ,hit     : params.hit
+                ,idx     : params.idx
             });
 
         return null;
@@ -145,9 +146,11 @@ const updateMulti = (params) => {
 
 const deleteMulti = (params) => {
     try {
-        let qry  = " DELETE FROM post_board WHERE idx IN (" + params + ") ";
+        let qry  = " DELETE FROM post_board WHERE idx IN (SELECT value FROM json_each(:idx)) ";
 
-            db.prepare(qry).run({ });
+            db.prepare(qry).run({ 
+                idx : params
+            });
 
         return null;
     } catch (err) {

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Form Checkbox List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<form name="form">
+		<table border="1">
+		    <colgroup> 
+		    	<col style="width: 5%;"/>
+		    	<col style="width: 10%;"/>
+		        <col style="width: 35%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 10%;"/>
+		    </colgroup>
+			<thead>
+			    <tr>
+			    	<th><input type="checkbox" name="checkAll" onclick="fn_checkAll()"></th>
+			        <th>번호</th>
+			        <th>제목</th>
+			        <th>이름</th>
+			        <th>날짜</th>
+			        <th>조회</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+                <% list.forEach((list, idx) => { %>
+                    <tr>
+                        <td><input type="checkbox" name="checkIdx" value="<%= list.idx %>" onclick="fn_uncheckAll()"></td>
+                        <td><%= list.idx %></td>
+                        <td><%= list.title %></td>
+                        <td><%= list.name %></td>
+                        <td><%= list.datetime %></td>
+                        <td><%= list.hit %></td>
+                    </tr>
+                <% }); %>
+		    </tbody>
+		    <tfoot>
+		    	<tr>
+		    		<td colspan="6">
+		    			제목 : <input type="text" name="name">
+		    			<br>이름 : <input type="text" name="title">
+		    			<br>내용 : <textarea name="content"></textarea>
+		    			<br>조회수 : <input type="number" name="hit" min="0" max="1000">
+						<br>
+						<button type="button" onclick="fn_checkCopy()">일괄 게시글 복제</button>
+						<button type="button" onclick="fn_checkUpdate()">일괄 수정</button>
+						<button type="button" onclick="fn_checkDelete()">일괄 삭제</button>
+		    		</td>
+		    	</tr>
+		    </tfoot>
+		</table>
+	</form>
+</body>
+<script>
+	function fn_checkAll() {
+		let chkAll = document.form.checkAll;
+		let chkIdx = document.form.checkIdx;
+		
+		if (!chkIdx) {			// 체크박스 해야할 항목이 없는 경우
+			return;
+		}
+		
+		if (!chkIdx.length) {	// 체크박스 항목이 한개인 경우
+			chkIdx.checked = chkAll.checked;
+			return;
+		}
+
+      	for (let i = 0; i < chkIdx.length; i++) {
+			chkIdx[i].checked = chkAll.checked;
+        }
+	}
+	
+	function fn_uncheckAll() {
+		let chkAll = document.form.checkAll;
+		chkAll.checked = false;
+	}
+	
+	function fn_checkCopy() {
+		let chkIdx = document.form.checkIdx;
+       	document.form.action = "/tmpl/uix/form/checkbox/copy";
+       	document.form.method = "POST";
+       	document.form.submit();
+	}
+	
+	function fn_checkUpdate() {
+       	document.form.action = "/tmpl/uix/form/checkbox/update";
+       	document.form.method = "POST";
+       	document.form.submit();
+	}
+	
+	function fn_checkDelete() {
+       	document.form.action = "/tmpl/uix/form/checkbox/delete";
+       	document.form.method = "POST";
+       	document.form.submit();
+	}
+</script>
+</html>

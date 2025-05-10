@@ -58,6 +58,7 @@ app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/f
 app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
 app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
 app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
+app.use('/tmpl/uix/form/checkbox'      , require(global.rootPath + '/routes/uix/form/checkbox/uixFormCheckbox_Route.js'));
 app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route.js'));
 app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
 

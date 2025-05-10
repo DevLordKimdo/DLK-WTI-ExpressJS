@@ -121,11 +121,47 @@ const deletePost = (params) => {
     }
 }
 
+const updateMulti = (params) => {
+    try {
+        let qry  = " UPDATE post_board SET                   ";
+            qry += "        title    =   :title              ";
+            qry += "      , name     =   :name               ";
+            qry += "      , content  =   :content            ";
+            qry += "      , hit      =   :hit                ";
+            qry += "  WHERE idx     IN  (" + params.idx + ") ";
+
+            db.prepare(qry).run({
+                 title   : params.title
+                ,name    : params.name
+                ,content : params.content
+                ,hit     : params.hit
+            });
+
+        return null;
+    } catch (err) {
+        return err;
+    }
+}
+
+const deleteMulti = (params) => {
+    try {
+        let qry  = " DELETE FROM post_board WHERE idx IN (" + params + ") ";
+
+            db.prepare(qry).run({ });
+
+        return null;
+    } catch (err) {
+        return err;
+    }
+}
+
 module.exports = {
     list,
     create,
     read,
     updateHit,
     update,
-    deletePost
+    deletePost,
+    updateMulti,
+    deleteMulti
 };

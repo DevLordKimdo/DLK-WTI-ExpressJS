@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Popup Sendvalue Popup</title>
+</head>
+<body>
+	<form name="form">
+		이름 : <input type="text" name="name"><br>
+		제목 : <input type="text" name="title"><br>
+		옵션 : <select name="option" id="option">
+			<option value="option1">option1</option>
+			<option value="option2">option2</option>
+			<option value="option3">option3</option>
+		</select><br>
+		체크 : <input type="checkbox" name="checkbox" id="checkbox"><br>
+		내용 : <textarea name="content"></textarea><br>
+	</form>
+	<button onclick="fn_send()">전달하기</button>
+</body>
+<script>
+	function fn_send() {
+        window.opener.document.getElementById("name").value = document.form.name.value;
+        window.opener.document.getElementById("title").value = document.form.title.value;
+        window.opener.document.getElementById("content").value = document.form.content.value;
+        
+        if(document.form.option.value == "option1"){
+        	window.opener.document.getElementById("option").options[0].selected = true;
+        } else if (document.form.option.value == "option2") {
+        	window.opener.document.getElementById("option").options[1].selected = true;
+        } else {
+        	window.opener.document.getElementById("option").options[2].selected = true;
+        }
+        
+        if(document.form.checkbox.checked == true){
+        	window.opener.document.getElementById("checkbox").checked = true;
+        } else {
+        	window.opener.document.getElementById("checkbox").checked = false;
+        }
+        
+        window.close();
+	}
+</script>
+</html>

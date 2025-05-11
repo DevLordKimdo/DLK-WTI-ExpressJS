@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Popup Sendvalue Index</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    이름 : <input type="text" name="name" id="name"><br>
+    제목 : <input type="text" name="title" id="title"><br>
+    옵션 : <select name="option" id="option">
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+    </select><br>
+    체크 : <input type="checkbox" name="checkbox" id="checkbox"><br>
+    내용 : <textarea name="content" id="content"></textarea><br>
+    <button onclick="fn_openPopup()">팝업창 띄우기</button>
+</body>
+<script>
+	function fn_openPopup() {
+		window.open('/tmpl/uix/popup/send-value/popup','popup','width=300, height=200, top=50, left=50, scrollbars=yes')
+	}
+</script>
+</html>

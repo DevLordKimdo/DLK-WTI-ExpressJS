@@ -63,5 +63,6 @@ app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/
 app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
 app.use('/tmpl/uix/iframe/basic'       , require(global.rootPath + '/routes/uix/iframe/basic/uixIframeBasic_Route.js'));
 app.use('/tmpl/uix/popup/modal'        , require(global.rootPath + '/routes/uix/popup/modal/uixPopupModal_Route.js'));
+app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/popup/sendvalue/uixPopupSendvalue_Route.js'));
 
 app.listen(svrPort);

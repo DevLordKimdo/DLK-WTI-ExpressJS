@@ -158,6 +158,34 @@ const deleteMulti = (params) => {
     }
 }
 
+const creaetReturnIdx = (params) => {
+    try {
+        let qry  = " INSERT INTO post_board (            ";
+            qry += "        title                        ";
+            qry += "      , content                      ";
+            qry += "      , name                         ";
+            qry += "      , datetime                     ";
+            qry += "      , hit                          ";
+            qry += " ) VALUES (                          ";
+            qry += "        :title                       ";
+            qry += "      , :content                     ";
+            qry += "      , :name                        ";
+            qry += "      , datetime('now', 'localtime') ";
+            qry += "      , '0'                          ";
+            qry += " )                                   ";
+
+            let result = db.prepare(qry).run({
+                 title   : params.title
+                ,content : params.content
+                ,name    : params.name
+            });
+        
+        return result.lastInsertRowid;
+    } catch (err) {
+        return err;
+    }
+}
+
 module.exports = {
     list,
     create,
@@ -166,5 +194,6 @@ module.exports = {
     update,
     deletePost,
     updateMulti,
-    deleteMulti
+    deleteMulti,
+    creaetReturnIdx
 };

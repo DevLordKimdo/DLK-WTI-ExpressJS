@@ -54,15 +54,16 @@ app.use('/tmpl/logic/http/prg-pattern' , require(global.rootPath + '/routes/logi
 app.use('/tmpl/auth/cookie/basic'      , require(global.rootPath + '/routes/auth/cookie/basic/authCookieBasic_Route'));
 app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth/session/basic/authSessionBasic_Route'));
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
-app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route.js'));
+app.use('/tmpl/db/crud/return-idx'     , require(global.rootPath + '/routes/db/crud/returnidx/dbCrudReturnidx_Route'));
+app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route'));
 app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
 app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
 app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
-app.use('/tmpl/uix/form/checkbox'      , require(global.rootPath + '/routes/uix/form/checkbox/uixFormCheckbox_Route.js'));
-app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route.js'));
-app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route.js'));
-app.use('/tmpl/uix/iframe/basic'       , require(global.rootPath + '/routes/uix/iframe/basic/uixIframeBasic_Route.js'));
-app.use('/tmpl/uix/popup/modal'        , require(global.rootPath + '/routes/uix/popup/modal/uixPopupModal_Route.js'));
-app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/popup/sendvalue/uixPopupSendvalue_Route.js'));
+app.use('/tmpl/uix/form/checkbox'      , require(global.rootPath + '/routes/uix/form/checkbox/uixFormCheckbox_Route'));
+app.use('/tmpl/uix/form/input-disable' , require(global.rootPath + '/routes/uix/form/inputdisable/uixFormInputdisable_Route'));
+app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/form/rowsubmit/uixFormRowsubmit_Route'));
+app.use('/tmpl/uix/iframe/basic'       , require(global.rootPath + '/routes/uix/iframe/basic/uixIframeBasic_Route'));
+app.use('/tmpl/uix/popup/modal'        , require(global.rootPath + '/routes/uix/popup/modal/uixPopupModal_Route'));
+app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/popup/sendvalue/uixPopupSendvalue_Route'));
 
 app.listen(svrPort);

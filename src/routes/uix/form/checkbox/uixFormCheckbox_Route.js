@@ -1,6 +1,7 @@
 const express        = require('express');
 const router         = express.Router();
 const dbCrud_Model   = require(global.rootPath + '/models/dbCrud_Model');
+const uixForm_Model  = require(global.rootPath + '/models/uixForm_Model');
 
 router.get(['/','/list'], async (req, res) => {
 
@@ -18,15 +19,8 @@ router.post('/copy', async (req, res) => {
         // checkIdx 값이 2개 이상일때는 배열로 들어오나 1개 일때는 String 값이 되므로 강제적으로 배열 타입으로 지정해주는 작업
         copyList = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
     }
-
-    for(const copy of copyList) {
-        let read         = dbCrud_Model.read(copy);
-        let data         = {};
-            data.title   = read.title;
-            data.name    = read.name;
-            data.content = read.content;
-        dbCrud_Model.create(data);
-    }
+    copyList = JSON.stringify(copyList);
+    uixForm_Model.createCopy(copyList);
 
     res.redirect('/tmpl' + '/uix/form/checkbox/list');
 });
@@ -40,7 +34,7 @@ router.post('/update', async (req, res) => {
     form.content  = req.body.content;
     form.hit      = req.body.hit;
     form.idx      = JSON.stringify(idxList);
-    dbCrud_Model.updateMulti(form);
+    uixForm_Model.updateMulti(form);
 
     res.redirect('/tmpl' + '/uix/form/checkbox/list');
 });
@@ -49,7 +43,7 @@ router.post('/delete', async (req, res) => {
     
     let idxList = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
         idxList = JSON.stringify(idxList);
-    dbCrud_Model.deleteMulti(idxList);
+    uixForm_Model.deleteMulti(idxList);
 
     res.redirect('/tmpl' + '/uix/form/checkbox/list');
 });

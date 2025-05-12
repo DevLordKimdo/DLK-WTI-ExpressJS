@@ -1,5 +1,4 @@
 const { db } = require(global.dbConf);
-const { sqlFormat } = require(global.rootPath + '/util/sqlManager');
 
 const list = () => {
     try {

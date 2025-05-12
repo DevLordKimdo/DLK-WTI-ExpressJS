@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Pagination Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table>
+	    <colgroup> 
+	    	<col style="width: 10%;"/>
+	        <col style="width: 40%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 10%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>제목</th>
+		        <th>이름</th>
+		        <th>날짜</th>
+		        <th>조회</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+			<% list.forEach((list, idx) => { %>
+				<tr>
+					<td><%= list.idx %></td>
+					<td><%= list.title %></a></td>
+					<td><%= list.name %></td>
+					<td><%= list.datetime %></td>
+					<td><%= list.hit %></td>
+				</tr>
+			<% }); %>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<!-- 페이징 처리 -->
+				<td colspan="3" style="text-align:center;">
+					<div>
+						<!-- 이전 페이지 묶음으로 가기 버튼 -->
+                        <% if (page.hasPrevPage) { %>
+                            <span onclick="fn_changePage(<%= page.startPageIndex - 1 %>)" style="cursor: pointer;">PREV</span>
+                        <% } %>
+
+						<!-- 페이징 목록 출력 -->
+                        <% for (let pageNum = page.startPageIndex; pageNum <= page.endPageIndex; pageNum++) { %>
+                            <% if(pageNum != page.currentPageIndex) { %>
+                                <!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 하이퍼링크를 적용해 출력 -->
+                                <span onclick="fn_changePage(<%= pageNum %>)" style="cursor: pointer;"><%= pageNum %></span>
+                            <% } else { %>
+                                <!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 번호만 출력 -->
+                                <span><%= pageNum %></span>
+                            <% } %>
+                        <% } %>
+						
+						<!-- 다음 페이지 묶음으로 가기 버튼 -->
+                        <% if (page.hasNextPage) { %>
+                            <span onclick="fn_changePage(<%= page.endPageIndex + 1 %>)" style="cursor: pointer;">NEXT</span>
+                        <% } %>
+					</div>
+				</td>
+			</tr>
+	    </tfoot>
+	</table>
+    <form name="form">
+		<input type="hidden" name="currentPage">
+	</form>
+</body>
+<Script>
+	function fn_changePage(currentPage) {
+		document.form.action = "/tmpl/uix/pagination/basic/list/" + currentPage;
+		document.form.method = "POST";
+		document.form.submit();
+	}
+</Script>
+</html>

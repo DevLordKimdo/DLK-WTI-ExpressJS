@@ -13,8 +13,6 @@ const list = (params) => {
             qry += "    LIMIT :postsPerPage  ";
             qry += "   OFFSET :pageStart     ";
 
-            console.log(params.postsPerPage , params.pageStart);
-
             const result = db.prepare(qry).all({
                   postsPerPage : params.postsPerPage
                 , pageStart    : params.pageStart

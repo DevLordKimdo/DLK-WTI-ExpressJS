@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Db Transactional Basic Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<form name="form">
+		이름 : <input type="text" name="name"><br>
+		제목 : <input type="text" name="title"><br>
+		내용 : <textarea name="content"></textarea><br>
+		에러 폼 전송 <input type="checkbox" name="errorCheck" checked><br>
+		<input type="hidden" name="errorOption" value="Y">
+		트랜잭션 옵션 적용 <input type="checkbox" name="transCheck"><br>
+		<input type="hidden" name="transOption" value="Y">
+		<button type="button" onclick="fn_submit()">작성</button>
+	</form>
+</body>
+<script>
+	function fn_submit() {
+		let errorCheck = document.form.errorCheck;
+		let transCheck = document.form.transCheck;
+		
+		document.form.errorOption.value = errorCheck.checked ? "Y" : "N";
+		document.form.transOption.value = transCheck.checked ? "Y" : "N";
+		
+		document.form.action = "/tmpl/db/transactional/basic/form";
+		document.form.method = "POST";
+		document.form.submit();
+	}
+</script>
+</html>

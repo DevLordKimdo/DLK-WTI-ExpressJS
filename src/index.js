@@ -56,6 +56,7 @@ app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
 app.use('/tmpl/db/crud/return-idx'     , require(global.rootPath + '/routes/db/crud/returnidx/dbCrudReturnidx_Route'));
 app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route'));
+app.use('/tmpl/db/transactional/basic' , require(global.rootPath + '/routes/db/transactional/basic/dbTransactionalBasic_Route'));
 app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
 app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
 app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));

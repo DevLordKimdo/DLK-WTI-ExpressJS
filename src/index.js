@@ -54,6 +54,7 @@ app.use('/tmpl/logic/http/prg-pattern' , require(global.rootPath + '/routes/logi
 app.use('/tmpl/auth/cookie/basic'      , require(global.rootPath + '/routes/auth/cookie/basic/authCookieBasic_Route'));
 app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth/session/basic/authSessionBasic_Route'));
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
+app.use('/tmpl/db/search/basic'        , require(global.rootPath + '/routes/db/search/basic/dbSearchBasic_Route'));
 app.use('/tmpl/db/crud/return-idx'     , require(global.rootPath + '/routes/db/crud/returnidx/dbCrudReturnidx_Route'));
 app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route'));
 app.use('/tmpl/db/transactional/basic' , require(global.rootPath + '/routes/db/transactional/basic/dbTransactionalBasic_Route'));

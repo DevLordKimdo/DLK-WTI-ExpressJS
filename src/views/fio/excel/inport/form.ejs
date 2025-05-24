@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fio Excel Inport Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<h2>엑셀 작성 양식(아래처럼 작성하고 업로드 할것)</h2>
+	<table border="1">
+		<colgroup> 
+	    	<col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+			<tr>
+				<th>title</th>
+				<th>name</th>
+				<th>content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>2</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>...</td>
+				<td>...</td>
+				<td>...</td>
+			</tr>
+			<tr>
+				<td>Sheet1</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2>Excel Upload</h2>
+	<form action="/tmpl/fio/excel/inport/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="excelUpload" accept=".xls, .xlsx"><br>
+		<input type="submit" value="엑셀업로드">
+	</form>	
+</body>
+</html>

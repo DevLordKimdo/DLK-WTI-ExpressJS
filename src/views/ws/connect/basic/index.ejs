@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ws Connect Basic Index</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    <div>
+        <h2>WebSocket</h2>
+        <div>
+	        <button onclick="connect()">연결</button>
+	        <button onclick="disconnect()">연결 해제</button>
+        </div>
+		<div>
+	        <input id="message" type="text">
+	        <button onclick="sendMessage()">전송</button>
+        </div>
+    </div>
+</body>
+    <script>
+    	let serverPort = window.location.port;
+    	let socketAddr = 'ws://localhost:' + serverPort + '/tmpl/ws/connect/basic/config';
+        let websocket  = null;
+        let openCheck  = false;
+        
+        function connect() {
+        	if(openCheck == false) {
+        		// 소켓통신 연결요청
+                websocket           = new WebSocket(socketAddr);
+        		// 연결이 성공 되었을 시 동작
+                websocket.onopen    = function() { console.log('연결 성공'); };
+                // 서버에서 메세지가 오면 하게 될 동작
+                websocket.onmessage = function(event) { console.log('서버 응답: ' + event.data); };
+                openCheck = true;
+        	}
+        }
+        
+        function disconnect() {
+        	// 통신 연결 해제
+        	if(websocket) { websocket.close(); openCheck = false; }
+        }
+        
+        function sendMessage() {
+            let message = document.getElementById('message').value;
+            // 서버로 메세지 전송
+        	websocket.send(message);
+        }
+    </script>
+</html>

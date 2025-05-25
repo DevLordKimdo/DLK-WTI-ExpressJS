@@ -1,10 +1,12 @@
 const express      = require('express');
 const config       = require('config');
 const path         = require('path');
+const http         = require('http');
 const app          = express();
 const session      = require('express-session');
 const SQLiteStore  = require('connect-sqlite3')(session);
 const cookieParser = require('cookie-parser');
+const WebSocket    = require('ws');
 
 // global 경로 설정
 global.rootPath   = path.resolve('src');
@@ -70,5 +72,10 @@ app.use('/tmpl/uix/iframe/basic'       , require(global.rootPath + '/routes/uix/
 app.use('/tmpl/uix/popup/modal'        , require(global.rootPath + '/routes/uix/popup/modal/uixPopupModal_Route'));
 app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/popup/sendvalue/uixPopupSendvalue_Route'));
 app.use('/tmpl/uix/pagination/basic'   , require(global.rootPath + '/routes/uix/pagination/basic/uixPaginationBasic_Route'));
+app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Route'));
 
-app.listen(svrPort);
+const server = app.listen(svrPort);
+
+// 웹소켓 매핑
+const wsConnectBasicConfig             = require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Config');
+new WebSocket.Server({ server, path: '/tmpl/ws/connect/basic/config' }).on('connection' , wsConnectBasicConfig.connect);

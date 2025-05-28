@@ -12,7 +12,7 @@
         "memoryLimit" : 16777216,
         "pageSize"    : 4096,
         "init"        : true,
-        "journal"     : "wal",
+        "journal"     : "WAL",
         "mode"        : "normal"
     },
     "server": {

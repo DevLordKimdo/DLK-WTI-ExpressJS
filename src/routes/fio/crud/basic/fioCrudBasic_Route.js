@@ -51,7 +51,7 @@ router.post('/create', async (req, res) => {
     // 물리 파일 생성
     await fsPromises.writeFile(filePath, content, { encoding: 'utf8' });
 
-    res.redirect('/fio/crud/basic/list');
+    res.redirect('/tmpl' + '/fio/crud/basic/list');
 });
 
 router.get('/read/:name', async (req, res) => {

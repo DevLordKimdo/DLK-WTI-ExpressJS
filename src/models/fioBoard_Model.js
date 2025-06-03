@@ -26,9 +26,9 @@ const newGroupIdx = () => {
 		    qry += "         END AS NewPostIdx                      ";
 		    qry += "   FROM file_board                              ";
 
-            const result = db.prepare(qry).all();
+            const result = db.prepare(qry).get();
 
-        return result[0].NewPostIdx;
+        return result.NewPostIdx;
     } catch (err) {
         return err;
     }

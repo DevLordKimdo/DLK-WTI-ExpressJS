@@ -15,7 +15,7 @@ router.post('/create', async (req, res) => {
         , name    : req.body.name
     }
 
-    let returnIdx = dbCrud_Model.creaetReturnIdx(form);
+    let returnIdx = dbCrud_Model.createReturnIdx(form);
     console.log('Return Idx : ' , returnIdx);
     
     res.redirect('/tmpl' + '/db/crud/return-idx/create');

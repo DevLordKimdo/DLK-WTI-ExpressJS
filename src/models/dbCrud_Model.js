@@ -120,7 +120,7 @@ const deletePost = (params) => {
     }
 }
 
-const creaetReturnIdx = (params) => {
+const createReturnIdx = (params) => {
     try {
         let qry  = " INSERT INTO post_board (            ";
             qry += "        title                        ";
@@ -148,7 +148,7 @@ const creaetReturnIdx = (params) => {
     }
 }
 
-const creaetWithTrans = (params, errorParams, errorOption) => {
+const createWithTrans = (params, errorParams, errorOption) => {
     try {
         db.prepare('BEGIN TRANSACTION').run();
 
@@ -197,6 +197,6 @@ module.exports = {
     updateHit,
     update,
     deletePost,
-    creaetReturnIdx,
-    creaetWithTrans
+    createReturnIdx,
+    createWithTrans
 };

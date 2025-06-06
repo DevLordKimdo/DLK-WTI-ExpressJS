@@ -23,7 +23,7 @@ router.post(['/','/form'], async (req, res) => {
     errorForm.content = null;
 
     if(transOption == 'Y') {
-        dbCrud_Model.creaetWithTrans(form, errorForm, errorOption);
+        dbCrud_Model.createWithTrans(form, errorForm, errorOption);
     } else {
         dbCrud_Model.create(form);
         if(errorOption == 'Y') { dbCrud_Model.create(errorForm); }
@@ -39,4 +39,4 @@ module.exports = router;
 // better-sqlite3 모듈에 특별한 트랜잭션 적용 기능 자체가 없음.
 // 그래서 직접 TCL 명령어를 입력하여 DB 조작을 해야함.
 // 로직 단에 트랜잭션을 걸 수 있는 마땅한 방법은 dbConf 를 또 불러와서 트랜잭션 명령어를 실행 하는 방법뿐인데
-// 코드가 지저분하고 일관성이 없어지므로 model 영역에 creaetWithTrans 라는 트랜잭션 명령어가 섞인 함수를 하나 추가 시킴.
+// 코드가 지저분하고 일관성이 없어지므로 model 영역에 createWithTrans 라는 트랜잭션 명령어가 섞인 함수를 하나 추가 시킴.

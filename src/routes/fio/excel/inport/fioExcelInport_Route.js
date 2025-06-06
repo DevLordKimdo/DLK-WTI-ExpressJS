@@ -31,18 +31,28 @@ router.get(['/','/form'], async (req, res) => {
 
 router.post('/upload', upload.single('excelUpload'), async (req, res) => {
 
+    if(!req.file || !req.file.buffer) {
+        console.log('파일 미업로드');
+        res.redirect('/tmpl' + '/fio/excel/inport/form');
+        return;
+    }
     let workbook = new ExcelJS.Workbook();
     await workbook.xlsx.load(req.file.buffer);
 
     let worksheet = workbook.getWorksheet("Sheet1"); // 시트 이름 검색
     let dataList = [];
+
+    if(!worksheet) { console.log('Sheet1을 찾을 수 없습니다.'); }
     
     // 엑셀의 데이터를 뽑아 객체배열을 만드는 과정.
     for (let rowNum = 2; rowNum <= worksheet.rowCount; rowNum++) {
         let row = worksheet.getRow(rowNum);
         let rowData = [];
 
-        // 고정방식. 첫번째열 - title, 두번째열 - name, 세번째열 - content. 무조건 이 틀을 지켜야 함.
+        // 고정방식. 무조건 아래의 틀을 지켜야함 (첫번째열 title, 두번째열 name, 세번째열 content)
+        // | title | name  | content |
+        // | ...   | ...   | ...     |
+        // | ...   | ...   | ...     |
         for (let colNum = 1; colNum <= 3; colNum++) {
             let cell = row.getCell(colNum);
             let value = cell.value;

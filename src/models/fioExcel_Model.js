@@ -3,7 +3,7 @@ const { db } = require(global.dbConf);
 const excelUpload = (params) => {
     try {
         let valueHolders = '';
-        let values = [];
+        let values = {};
 
         params.forEach((data, index) => {
             valueHolders += `(:title${index}, :name${index}, :content${index}),`;
@@ -18,7 +18,7 @@ const excelUpload = (params) => {
             qry += `      VALUES                          `;
             qry += `             ${valueHolders}          `;
 
-        db.prepare(qry).run({ ...values });
+        db.prepare(qry).run( values );
         
         return null;
     } catch (err) {

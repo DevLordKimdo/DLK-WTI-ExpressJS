@@ -1,6 +1,7 @@
 const express        = require('express');
 const router         = express.Router();
 const dbCrud_Model   = require(global.rootPath + '/models/dbCrud_Model');
+const dbTransactional_Model   = require(global.rootPath + '/models/dbTransactional_Model');
 
 router.get(['/','/form'], async (req, res) => {
 
@@ -23,7 +24,7 @@ router.post(['/','/form'], async (req, res) => {
     errorForm.content = null;
 
     if(transOption == 'Y') {
-        dbCrud_Model.createWithTrans(form, errorForm, errorOption);
+        dbTransactional_Model.createWithTrans(form, errorForm, errorOption);
     } else {
         dbCrud_Model.create(form);
         if(errorOption == 'Y') { dbCrud_Model.create(errorForm); }

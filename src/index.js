@@ -77,5 +77,5 @@ app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/c
 const server = app.listen(svrPort);
 
 // 웹소켓 매핑
-const wsConnectBasicConfig             = require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Config');
+const wsConnectBasicConfig             = require(global.rootPath + '/websocket/wsConnectBasic_Config');
 new WebSocket.Server({ server, path: '/tmpl/ws/connect/basic/config' }).on('connection' , wsConnectBasicConfig.connect);

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/styles.css">
 <body>
 	<form action="/tmpl/uix/form/input-disable/submit" method="post">
-		<H2>Input Text</H2>
+		<h2>Input Text</h2>
 		<input type="text" name="textNormal" value="Normal"><br>
 		<input type="text" name="textReadonly" value="Readonly" readonly><br>
 		<input type="text" name="textDisabled" value="Disabled" disabled><br>
@@ -16,7 +16,7 @@
 		<input type="text" name="textRequired" value="" placeholder="Required" required><br>
 		<input type="hidden" name="textHidden" value="Hidden"><br>
 		
-		<H2>CheckBox</H2>
+		<h2>CheckBox</h2>
 		<div>Normal 1 : <input type="checkbox" name="checkboxNormal1"></div> <!-- 따로 value 값을 지정 안했을 경우 기본 값으로 on이 전달됨 -->
 		<div>Normal 2 : <input type="checkbox" name="checkboxNormal2" value="true"></div>
 		<!-- 노드JS 경우 두개의 같은 name 값을 가진 input 태그 값을 받으면 두개 값을 하나의 배열로 전송함. -->
@@ -29,7 +29,7 @@
 		<div>Disabled True  : <input type="checkbox" name="checkboxDisabledTrue" value="true" checked Disabled></div>
 		<div>Disabled False : <input type="checkbox" name="checkboxDisabledFalse" value="true" Disabled></div>
 		
-		<H2>Select</H2>
+		<h2>Select</h2>
 		<div>Normal : 
 			<select name="selectNormal">
 				<option value="A" selected>A</option>
@@ -59,7 +59,7 @@
 			</select>
 		</div>
 		
-		<H2>Radio</H2>
+		<h2>Radio</h2>
 		<div>Normal
 			<input type="radio" name="radioNormal" value="A" checked>
 			<input type="radio" name="radioNormal" value="B">
@@ -81,12 +81,12 @@
 			<input type="radio" name="radioDisabled" value="C" Disabled>
 		</div>
 		
-		<H2>TextArea</H2>
+		<h2>TextArea</h2>
 		<textarea name="textareaNormal">Normal</textarea><br>
 		<textarea name="textareaReadonly" readonly>Readonly</textarea><br>
 		<textarea name="textareaDisabled" disabled>Disabled</textarea><br>
 		
-		<H2>전송</H2>
+		<h2>전송</h2>
 		<input type="submit" value="전송">
 	</form>
 </body>

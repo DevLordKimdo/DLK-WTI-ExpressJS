@@ -29,7 +29,7 @@ const updateMulti = (params) => {
                 ,name    : params.name
                 ,content : params.content
                 ,hit     : params.hit
-                ,idx     : params.idx
+                ,idx     : params.checkIdx
             });
 
         return null;

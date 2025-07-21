@@ -27,13 +27,13 @@ router.post('/copy', async (req, res) => {
 
 router.post('/update', async (req, res) => {
 
-    let idxList   = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
+    let checkIdx  = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
     let form      = {};
     form.title    = req.body.title;
     form.name     = req.body.name;
     form.content  = req.body.content;
     form.hit      = req.body.hit;
-    form.idx      = JSON.stringify(idxList);
+    form.checkIdx = JSON.stringify(checkIdx);
     uixForm_Model.updateMulti(form);
 
     res.redirect('/tmpl' + '/uix/form/checkbox/list');
@@ -41,9 +41,9 @@ router.post('/update', async (req, res) => {
 
 router.post('/delete', async (req, res) => {
     
-    let idxList = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
-        idxList = JSON.stringify(idxList);
-    uixForm_Model.deleteMulti(idxList);
+    let checkIdx = Array.isArray(req.body.checkIdx) ? req.body.checkIdx : [req.body.checkIdx];
+        checkIdx = JSON.stringify(checkIdx);
+    uixForm_Model.deleteMulti(checkIdx);
 
     res.redirect('/tmpl' + '/uix/form/checkbox/list');
 });

@@ -24,7 +24,7 @@ const createWithTrans = (params, errorParams, errorOption) => {
             ,name    : params.name
         });
 
-        if(errorOption == 'Y') {
+        if(errorOption == 'true') {
             db.prepare(qry).run({
                  title   : errorParams.title
                 ,content : errorParams.content

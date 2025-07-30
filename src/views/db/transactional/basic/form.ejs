@@ -12,9 +12,9 @@
 		제목 : <input type="text" name="title"><br>
 		내용 : <textarea name="content"></textarea><br>
 		에러 폼 전송 <input type="checkbox" name="errorCheck" checked><br>
-		<input type="hidden" name="errorOption" value="Y">
+		<input type="hidden" name="errorOption" value="true">
 		트랜잭션 옵션 적용 <input type="checkbox" name="transCheck"><br>
-		<input type="hidden" name="transOption" value="Y">
+		<input type="hidden" name="transOption" value="true">
 		<button type="button" onclick="fn_submit()">작성</button>
 	</form>
 </body>
@@ -23,8 +23,8 @@
 		let errorCheck = document.form.errorCheck;
 		let transCheck = document.form.transCheck;
 		
-		document.form.errorOption.value = errorCheck.checked ? "Y" : "N";
-		document.form.transOption.value = transCheck.checked ? "Y" : "N";
+		document.form.errorOption.value = errorCheck.checked ? "true" : "false";
+		document.form.transOption.value = transCheck.checked ? "true" : "false";
 		
 		document.form.action = "/tmpl/db/transactional/basic/form";
 		document.form.method = "POST";

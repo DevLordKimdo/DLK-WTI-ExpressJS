@@ -12,6 +12,7 @@ router.post(['/','/form'], async (req, res) => {
 
     let errorOption   = req.body.errorOption;
     let transOption   = req.body.transOption;
+    console.log(errorOption , '/' , transOption);
 
     let form          = {};
     form.title        = req.body.title;
@@ -23,11 +24,11 @@ router.post(['/','/form'], async (req, res) => {
     errorForm.name    = null;
     errorForm.content = null;
 
-    if(transOption == 'Y') {
+    if(transOption == 'true') {
         dbTransactional_Model.createWithTrans(form, errorForm, errorOption);
     } else {
         dbCrud_Model.create(form);
-        if(errorOption == 'Y') { dbCrud_Model.create(errorForm); }
+        if(errorOption == 'true') { dbCrud_Model.create(errorForm); }
     }
 
     res.redirect('/tmpl' + '/db/transactional/basic/form');

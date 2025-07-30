@@ -61,8 +61,8 @@ app.use('/tmpl/db/crud/return-idx'     , require(global.rootPath + '/routes/db/c
 app.use('/tmpl/db/form/row-submit'     , require(global.rootPath + '/routes/db/form/rowsubmit/dbFormRowsubmit_Route'));
 app.use('/tmpl/db/transactional/basic' , require(global.rootPath + '/routes/db/transactional/basic/dbTransactionalBasic_Route'));
 app.use('/tmpl/fio/board/basic'        , require(global.rootPath + '/routes/fio/board/basic/fioBoardBasic_Route'));
-app.use('/tmpl/fio/excel/export'       , require(global.rootPath + '/routes/fio/excel/export/fioexcelExport_Route'));
-app.use('/tmpl/fio/excel/inport'       , require(global.rootPath + '/routes/fio/excel/inport/fioexcelInport_Route'));
+app.use('/tmpl/fio/excel/export'       , require(global.rootPath + '/routes/fio/excel/export/fioExcelExport_Route'));
+app.use('/tmpl/fio/excel/inport'       , require(global.rootPath + '/routes/fio/excel/inport/fioExcelInport_Route'));
 app.use('/tmpl/fio/crud/basic'         , require(global.rootPath + '/routes/fio/crud/basic/fioCrudBasic_Route'));
 app.use('/tmpl/fio/updown/basic'       , require(global.rootPath + '/routes/fio/updown/basic/fioUpdownBasic_Route'));
 app.use('/tmpl/uix/form/checkbox'      , require(global.rootPath + '/routes/uix/form/checkbox/uixFormCheckbox_Route'));

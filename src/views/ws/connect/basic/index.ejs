@@ -20,8 +20,8 @@
     </div>
 </body>
     <script>
-    	let serverPort = window.location.port;
-    	let socketAddr = 'ws://localhost:' + serverPort + '/tmpl/ws/connect/basic/config';
+        let serverHost = window.location.host;
+    	let socketAddr = 'ws://' + serverHost + '/tmpl/ws/connect/basic/config';
         let websocket  = null;
         let openCheck  = false;
         

@@ -28,13 +28,20 @@
 	function fn_requestFrontend() {
 	    var date = new Date();
 	    date.setTime(date.getTime() + (3600 * 1000)); // (초 * 나노시간)
+	    
+	    // HTTPS 환경에서만 Secure 추가
+	    let checkHttps = window.location.protocol === 'https:';
 		
 		let cookieName = "frontendCookie";
 		let value      = "value";
 		let expires    = "expires=" + date.toUTCString();
 		//let expires    = "expires=" + date.toLocaleString(); // 거주하고 있는 국가 시간으로 설정.
+		let path       = "path=/";
+		let secure     = checkHttps ? "Secure" : "";
+		let sameSite   = "SameSite=Lax";
+		//let HttpOnly = 해당 옵션이 적용된 쿠키는 백엔드 에서만 발급가능. 자바스크립트로 쿠키접근하는 것을 차단.
 		
-		document.cookie = cookieName + "=" + (value || "") + ";" + expires + ";" + "path=/";
+		document.cookie = cookieName + "=" + (value || "") + ";" + expires + ";" + path + ";" + secure + ";" + sameSite + ";";
 	}
 	
 	function fn_checkCookie() {

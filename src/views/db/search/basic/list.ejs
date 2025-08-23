@@ -29,7 +29,7 @@
 				<tr>
 					<td><%= list.idx %></td>
 					<td><%= list.title %></td>
-					<td><%= list.name %></td>
+					<td><%= list.username %></td>
 					<td><%= list.datetime %></td>
 					<td><%= list.hit %></td>
 				</tr>
@@ -42,7 +42,7 @@
 						<select name="searchOption">
 							<option value="title"   <% if(search.searchOption == 'title')   { %> selected <% } %> >title</option>
 							<option value="content" <% if(search.searchOption == 'content') { %> selected <% } %> >content</option>
-							<option value="name"    <% if(search.searchOption == 'name')    { %> selected <% } %> >name</option>
+							<option value="username"<% if(search.searchOption == 'username'){ %> selected <% } %> >username</option>
 						</select>
 						<input type="text" name="searchKeyword" value="<%= search.searchKeyword %>">
 						<input type="date" name="searchDateStart"> ~

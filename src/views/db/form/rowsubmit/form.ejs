@@ -35,7 +35,7 @@
 			<tr class="trTemplate" id="trQueue" style="display: none;">
 				<td><span class="num">Queue</span></td>
 				<td><input type="text" name="title" id="titleQueue"></td>
-				<td><input type="text" name="name" id="nameQueue"></td>
+				<td><input type="text" name="username" id="usernameQueue"></td>
 				<td><textarea name="content" id="contentQueue"></textarea></td>
 				<td>
 					<button type="button" id="deleteRow" onclick="fn_deleteRow(Queue)">삭제</button>
@@ -64,7 +64,7 @@
 		
 		newRow.querySelector('.num').textContent=Queue;
 	    newRow.querySelector('#titleQueue').id="title"+Queue;
-	    newRow.querySelector('#nameQueue').id="name"+Queue;
+	    newRow.querySelector('#usernameQueue').id="username"+Queue;
 	    newRow.querySelector('#contentQueue').id="content"+Queue;
 	    newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
 	    newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
@@ -91,13 +91,13 @@
 		
 		newRow.querySelector('.num').textContent=Queue;
 	    newRow.querySelector('#titleQueue').id="title"+Queue;
-	    newRow.querySelector('#nameQueue').id="name"+Queue;
+	    newRow.querySelector('#usernameQueue').id="username"+Queue;
 	    newRow.querySelector('#contentQueue').id="content"+Queue;
 	    newRow.querySelector('#deleteRow').setAttribute("onclick", "fn_deleteRow("+Queue+")");
 	    newRow.querySelector('#copyRow').setAttribute("onclick", "fn_copyRow("+Queue+")");
 	    
 	    newRow.querySelector('#title'+Queue).value = document.getElementById('title'+num).value;
-	    newRow.querySelector('#name'+Queue).value = document.getElementById('name'+num).value;
+	    newRow.querySelector('#username'+Queue).value = document.getElementById('username'+num).value;
 	    newRow.querySelector('#content'+Queue).value = document.getElementById('content'+num).value;
 	    
 	    Queue = Queue + 1;

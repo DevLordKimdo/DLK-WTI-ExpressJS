@@ -8,16 +8,16 @@ router.get(['/','/form'], async (req, res) => {
 
 router.post('/submit', async (req, res) => {
 
-    let listTitle   = req.body.title;
-    let listName    = req.body.name;
-    let listContent = req.body.content;
-    let list        = [];
+    let listTitle    = req.body.title;
+    let listUsername = req.body.username;
+    let listContent  = req.body.content;
+    let list         = [];
 
     for(let i = 0; i < listTitle.length; i++) {
         list.push({
-              title   : listTitle[i]
-            , name    : listName[i]
-            , content : listContent[i]
+              title    : listTitle[i]
+            , username : listUsername[i]
+            , content  : listContent[i]
         });
     }
     console.log(list);

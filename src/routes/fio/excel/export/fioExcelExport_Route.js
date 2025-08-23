@@ -19,7 +19,7 @@ router.get('/down-excel', async (req, res) => {
         worksheet.columns = [
             { header: 'idx',      key: 'idx',      width: 10 },
             { header: 'title',    key: 'title',    width: 10 },
-            { header: 'name',     key: 'name',     width: 10 },
+            { header: 'username',     key: 'username',     width: 10 },
             { header: 'content',  key: 'content',  width: 10 },
             { header: 'datetime', key: 'datetime', width: 10 },
             { header: 'hit',      key: 'hit',      width: 10 },
@@ -33,7 +33,7 @@ router.get('/down-excel', async (req, res) => {
             worksheet.addRow({
                 idx     : data.idx,
                 title   : data.title,
-                name    : data.name,
+                username    : data.username,
                 content : data.content,
                 datetime: data.datetime,
                 hit     : data.hit

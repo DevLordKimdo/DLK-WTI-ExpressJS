@@ -6,15 +6,15 @@ const excelUpload = (params) => {
         let values = {};
 
         params.forEach((data, index) => {
-            valueHolders += `(:title${index}, :name${index}, :content${index}),`;
-            values[`title${index}`]   = data.title;
-            values[`name${index}`]    = data.name;
-            values[`content${index}`] = data.content;
+            valueHolders += `(:title${index}, :username${index}, :content${index}),`;
+            values[`title${index}`]    = data.title;
+            values[`username${index}`] = data.username;
+            values[`content${index}`]  = data.content;
         });
         valueHolders = valueHolders.slice(0, -1);
 
         let qry  = ` INSERT INTO post_board               `;
-            qry += `             ( title, name, content ) `;
+            qry += `             ( title, username, content ) `;
             qry += `      VALUES                          `;
             qry += `             ${valueHolders}          `;
 

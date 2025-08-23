@@ -5,16 +5,16 @@ const list = (params) => {
         let qry  = " SELECT idx        ";
             qry += "      , title      ";
             qry += "      , content    ";
-            qry += "      , name       ";
+            qry += "      , username       ";
             qry += "      , datetime   ";
             qry += "      , hit        ";
             qry += "   FROM post_board ";
             qry += "  WHERE 1 = 1      ";
 
             if(params.searchKeyword) {
-                     if(params.searchOption == 'title')   { qry += " AND title   LIKE '%' || :searchKeyword || '%' "; }
-                else if(params.searchOption == 'content') { qry += " AND content LIKE '%' || :searchKeyword || '%' "; }
-                else if(params.searchOption == 'name')    { qry += " AND name    LIKE '%' || :searchKeyword || '%' "; }
+                     if(params.searchOption == 'title')    { qry += " AND title   LIKE '%' || :searchKeyword || '%' "; }
+                else if(params.searchOption == 'content')  { qry += " AND content LIKE '%' || :searchKeyword || '%' "; }
+                else if(params.searchOption == 'username') { qry += " AND username    LIKE '%' || :searchKeyword || '%' "; }
             }
 
             if(params.searchDateStart && params.searchDateStart) {

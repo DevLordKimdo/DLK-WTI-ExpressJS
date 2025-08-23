@@ -33,7 +33,7 @@
                         <td><input type="checkbox" name="checkIdx" value="<%= list.idx %>" onclick="fn_uncheckAll()"></td>
                         <td><%= list.idx %></td>
                         <td><%= list.title %></td>
-                        <td><%= list.name %></td>
+                        <td><%= list.username %></td>
                         <td><%= list.datetime %></td>
                         <td><%= list.hit %></td>
                     </tr>
@@ -42,10 +42,10 @@
 		    <tfoot>
 		    	<tr>
 		    		<td colspan="6">
-		    			제목 : <input type="text" name="name">
-		    			<br>이름 : <input type="text" name="title">
+		    			제목 : <input type="text" name="title">
+		    			<br>이름 : <input type="text" name="username">
 		    			<br>내용 : <textarea name="content"></textarea>
-		    			<br>조회수 : <input type="number" name="hit" min="0" max="1000">
+		    			<br>조회수 : <input type="number" name="hit" min="0" max="1000" value="0">
 						<br>
 						<button type="button" onclick="fn_checkCopy()">일괄 게시글 복제</button>
 						<button type="button" onclick="fn_checkUpdate()">일괄 수정</button>

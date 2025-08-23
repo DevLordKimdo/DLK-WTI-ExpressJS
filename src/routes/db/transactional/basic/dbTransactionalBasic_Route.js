@@ -12,17 +12,16 @@ router.post(['/','/form'], async (req, res) => {
 
     let errorOption   = req.body.errorOption;
     let transOption   = req.body.transOption;
-    console.log(errorOption , '/' , transOption);
 
     let form          = {};
     form.title        = req.body.title;
-    form.name         = req.body.name;
+    form.username     = req.body.username;
     form.content      = req.body.content;
 
-    let errorForm     = {};
-    errorForm.title   = null;
-    errorForm.name    = null;
-    errorForm.content = null;
+    let errorForm      = {};
+    errorForm.title    = null;
+    errorForm.username = null;
+    errorForm.content  = null;
 
     if(transOption == 'true') {
         dbTransactional_Model.createWithTrans(form, errorForm, errorOption);

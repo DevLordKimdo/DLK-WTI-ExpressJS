@@ -5,7 +5,7 @@ const list = (params) => {
         let qry  = "   SELECT idx            ";
             qry += "        , title          ";
             qry += "        , content        ";
-            qry += "        , name           ";
+            qry += "        , username       ";
             qry += "        , datetime       ";
             qry += "        , hit            ";
             qry += "     FROM post_board     ";

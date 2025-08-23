@@ -12,7 +12,7 @@ router.post('/create', async (req, res) => {
     let form = {
           title   : req.body.title
         , content : req.body.content
-        , name    : req.body.name
+        , username    : req.body.username
     }
 
     let returnIdx = dbCrud_Model.createReturnIdx(form);

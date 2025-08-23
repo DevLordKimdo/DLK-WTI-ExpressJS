@@ -10,14 +10,14 @@ router.get(['/','/form'], async (req, res) => {
 router.post('/submit', async (req, res) => {
 
     let listTitle    = req.body.title;
-    let listName     = req.body.name;
+    let listUsername = req.body.username;
     let listContent  = req.body.content;
 
     for(let i = 0; i < listTitle.length; i++) {
-        let form         = {};
-            form.title   = listTitle[i];
-            form.name    = listName[i];
-            form.content = listContent[i];
+        let form          = {};
+            form.title    = listTitle[i];
+            form.username = listUsername[i];
+            form.content  = listContent[i];
 
         dbCrud_Model.create(form);
     }

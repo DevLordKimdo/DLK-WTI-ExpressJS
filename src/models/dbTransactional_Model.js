@@ -7,13 +7,13 @@ const createWithTrans = (params, errorParams, errorOption) => {
         let qry  = " INSERT INTO post_board (            ";
             qry += "        title                        ";
             qry += "      , content                      ";
-            qry += "      , name                         ";
+            qry += "      , username                         ";
             qry += "      , datetime                     ";
             qry += "      , hit                          ";
             qry += " ) VALUES (                          ";
             qry += "        :title                       ";
             qry += "      , :content                     ";
-            qry += "      , :name                        ";
+            qry += "      , :username                        ";
             qry += "      , datetime('now', 'localtime') ";
             qry += "      , '0'                          ";
             qry += " )                                   ";
@@ -21,14 +21,14 @@ const createWithTrans = (params, errorParams, errorOption) => {
         db.prepare(qry).run({
              title   : params.title
             ,content : params.content
-            ,name    : params.name
+            ,username    : params.username
         });
 
         if(errorOption == 'true') {
             db.prepare(qry).run({
-                 title   : errorParams.title
-                ,content : errorParams.content
-                ,name    : errorParams.name
+                 title    : errorParams.title
+                ,content  : errorParams.content
+                ,username : errorParams.username
             });
         }
         

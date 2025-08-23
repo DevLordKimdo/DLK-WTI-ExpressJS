@@ -5,7 +5,7 @@ const list = () => {
         let qry  = " SELECT idx        ";
             qry += "      , title      ";
             qry += "      , content    ";
-            qry += "      , name       ";
+            qry += "      , username       ";
             qry += "      , datetime   ";
             qry += "      , hit        ";
             qry += "   FROM post_board ";
@@ -23,13 +23,13 @@ const create = (params) => {
         let qry  = " INSERT INTO post_board (            ";
             qry += "        title                        ";
             qry += "      , content                      ";
-            qry += "      , name                         ";
+            qry += "      , username                         ";
             qry += "      , datetime                     ";
             qry += "      , hit                          ";
             qry += " ) VALUES (                          ";
             qry += "        :title                       ";
             qry += "      , :content                     ";
-            qry += "      , :name                        ";
+            qry += "      , :username                        ";
             qry += "      , datetime('now', 'localtime') ";
             qry += "      , '0'                          ";
             qry += " )                                   ";
@@ -37,7 +37,7 @@ const create = (params) => {
             db.prepare(qry).run({
                  title   : params.title
                 ,content : params.content
-                ,name    : params.name
+                ,username    : params.username
             });
 
         return null;
@@ -51,7 +51,7 @@ const read = (params) => {
         let qry  = " SELECT idx        ";
             qry += "      , title      ";
             qry += "      , content    ";
-            qry += "      , name       ";
+            qry += "      , username       ";
             qry += "      , datetime   ";
             qry += "      , hit        ";
             qry += "   FROM post_board ";
@@ -87,14 +87,14 @@ const update = (params) => {
     try {
         let qry  = " UPDATE post_board         ";
             qry += "    SET title   = :title   ";
-            qry += "      , name    = :name    ";
+            qry += "      , username    = :username    ";
             qry += "      , content = :content ";
             qry += "  WHERE idx     = :idx     ";
 
         db.prepare(qry).run({
                 title   : params.title
             ,content : params.content
-            ,name    : params.name
+            ,username    : params.username
             ,idx     : params.idx
         });
         
@@ -125,21 +125,21 @@ const createReturnIdx = (params) => {
         let qry  = " INSERT INTO post_board (            ";
             qry += "        title                        ";
             qry += "      , content                      ";
-            qry += "      , name                         ";
+            qry += "      , username                         ";
             qry += "      , datetime                     ";
             qry += "      , hit                          ";
             qry += " ) VALUES (                          ";
             qry += "        :title                       ";
             qry += "      , :content                     ";
-            qry += "      , :name                        ";
+            qry += "      , :username                        ";
             qry += "      , datetime('now', 'localtime') ";
             qry += "      , '0'                          ";
             qry += " )                                   ";
 
         let result = db.prepare(qry).run({
-                title   : params.title
-            ,content : params.content
-            ,name    : params.name
+                title  : params.title
+            ,content   : params.content
+            ,username  : params.username
         });
         
         return result.lastInsertRowid;

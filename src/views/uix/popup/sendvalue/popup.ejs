@@ -7,7 +7,7 @@
 </head>
 <body>
 	<form name="form">
-		이름 : <input type="text" name="name"><br>
+		이름 : <input type="text" name="username"><br>
 		제목 : <input type="text" name="title"><br>
 		옵션 : <select name="option" id="option">
 			<option value="option1">option1</option>
@@ -21,7 +21,7 @@
 </body>
 <script>
 	function fn_send() {
-        window.opener.document.getElementById("name").value = document.form.name.value;
+        window.opener.document.getElementById("username").value = document.form.username.value;
         window.opener.document.getElementById("title").value = document.form.title.value;
         window.opener.document.getElementById("content").value = document.form.content.value;
         

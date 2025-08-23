@@ -19,7 +19,7 @@ router.post('/create', async (req, res) => {
     let form = {
           title   : req.body.title
         , content : req.body.content
-        , name    : req.body.name
+        , username    : req.body.username
     }
 
     dbCrud_Model.create(form);
@@ -42,7 +42,7 @@ router.post('/update/:idx', async (req, res) => {
     let form = {
           title   : req.body.title
         , content : req.body.content
-        , name    : req.body.name
+        , username    : req.body.username
         , idx     : req.params.idx
     }
 

@@ -75,6 +75,7 @@ app.use('/tmpl/uix/pagination/basic'   , require(global.rootPath + '/routes/uix/
 app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Route'));
 
 const server = app.listen(svrPort);
+// app.listen(svrPort, () => { console.log('서버 가동'); }); // 위 코드와 동일
 
 // 웹소켓 매핑
 const wsConnectBasicConfig             = require(global.rootPath + '/websocket/wsConnectBasic_Config');

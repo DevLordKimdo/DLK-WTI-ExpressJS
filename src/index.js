@@ -71,6 +71,7 @@ app.use('/tmpl/uix/form/row-submit'    , require(global.rootPath + '/routes/uix/
 app.use('/tmpl/uix/iframe/basic'       , require(global.rootPath + '/routes/uix/iframe/basic/uixIframeBasic_Route'));
 app.use('/tmpl/uix/popup/modal'        , require(global.rootPath + '/routes/uix/popup/modal/uixPopupModal_Route'));
 app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/popup/sendvalue/uixPopupSendvalue_Route'));
+app.use('/tmpl/uix/popup/terms'        , require(global.rootPath + '/routes/uix/popup/terms/uixPopupTerms_Route'));
 app.use('/tmpl/uix/pagination/basic'   , require(global.rootPath + '/routes/uix/pagination/basic/uixPaginationBasic_Route'));
 app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Route'));
 

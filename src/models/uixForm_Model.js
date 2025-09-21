@@ -50,8 +50,22 @@ const deleteMulti = (params) => {
     }
 }
 
+const listUser = () => {
+    try {
+        let qry  = " SELECT username , manages FROM user_account ";
+        
+            let result = db.prepare(qry).all();
+
+        return result;
+    } catch (err) {
+        return err;
+    }
+}
+
+
 module.exports = {
     createCopy,
     updateMulti,
-    deleteMulti
+    deleteMulti,
+    listUser
 };

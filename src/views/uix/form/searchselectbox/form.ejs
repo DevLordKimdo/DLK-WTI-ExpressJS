@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Form Search-Selectbox Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<style>
+        .dropdown {
+            position: relative;
+            width: 200px;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            display: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .dropdown-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+</style>
+<body>
+    <h2>SELECT BOX (DATALIST)</h2>
+    <form name="form">
+        <input type="text" name="username" list="listUser" autocomplete="off">
+        <datalist id="listUser">
+            <% listUser.forEach((list) => { %>
+                <option value="<%= list.username %>">
+            <% }); %>
+        </datalist>
+        <button type="button" onclick="fn_submit()">전송</button>
+        <!-- 사용자가 입력한 값과 실제 선택할 수 있는 데이터간의 일치하는지 확인용으로 사용할 데이터. -->
+    </form>
+
+    <h2>SELECT BOX (CUSTOM STYLE) + SUB DATA</h2>
+    <form name="customForm">
+        <div class="dropdown">
+            <input type="text" name="username" id="customInput" autocomplete="off">
+            <div class="dropdown-list" id="dropdownList"></div>
+        </div>
+        <input type="hidden" name="manages" id="manages">
+        <button type="button" onclick="fn_customSubmit()">전송</button>
+        <!-- 사용자가 입력한 값과 실제 선택할 수 있는 데이터간의 일치하는지 확인용으로 사용할 데이터. -->
+    </form>
+
+    <!-- 입력값 검증용 -->
+    <input type="hidden" name="userRawData" id="userRawData" value="<%= JSON.stringify(listUser) %>">
+</body>
+<script>
+
+    // SELECT BOX (DATALIST) 관련 JS 코드들
+    function fn_submit() {
+        const selectedUser = document.form.username.value.trim();
+        const userRawData  = JSON.parse(document.getElementById('userRawData').value);
+        const validData    = userRawData.map(user => user.username);
+
+        if (!document.form.username.value) {
+            alert('사용자를 입력해주세요');
+            return false;
+        }
+        
+        if (!validData.includes(selectedUser)) {
+            alert('올바른 사용자를 선택해주세요');
+            document.form.username.value = '';
+            return false;
+        }
+
+        document.form.action = "/tmpl/uix/form/search-selectbox/submit";
+        document.form.method = "POST";
+        document.form.submit();
+    }
+
+    // SELECT BOX (CUSTOM STYLE) 관련 JS 코드들
+    const listUser     = JSON.parse(document.getElementById('userRawData').value);
+    const customInput  = document.getElementById('customInput');
+    const dropdown     = document.getElementById('dropdownList');
+    const managesInput = document.getElementById('manages');
+    
+    // 포커스 시 전체 목록 표시
+    customInput.addEventListener('focus', function() {
+        dropdown.innerHTML = '';
+        listUser.forEach(user => {
+            const item = document.createElement('div');
+            item.className = 'dropdown-item';
+            item.textContent = user.username;
+            item.dataset.manages = user.manages;
+            item.onclick = function() { selectUser(user.username, user.manages) };
+            dropdown.appendChild(item);
+        });
+        dropdown.style.display = 'block';
+    });
+
+    // 입력 시 필터링된 목록 표시
+    customInput.addEventListener('input', function() {
+        const value = this.value.toLowerCase();
+        dropdown.innerHTML = '';
+        
+        if (value) {
+            // 필터링 로직
+            const filtered = listUser.filter( user => user.username.toLowerCase().includes(value) );
+            
+            filtered.forEach(user => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                item.textContent = user.username;
+                item.dataset.manages = user.manages;
+                item.onclick = function() { selectUser(user.username, user.manages) };
+                dropdown.appendChild(item);
+            });
+            
+            dropdown.style.display = filtered.length ? 'block' : 'none';
+        } else {
+            dropdown.style.display = 'none';
+        }
+    });
+    
+    // 외부 클릭 시 드롭다운 숨김
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            dropdown.style.display = 'none';
+        }
+    });
+    
+    // 목록 중 하나를 선택하면 드롭다운 숨김
+    function selectUser(username, manages) {
+        customInput.value = username;
+        managesInput.value = manages;
+        dropdown.style.display = 'none';
+    }
+
+    // 전송
+    function fn_customSubmit() {
+        const selectedUser = customInput.value.trim();
+        const validData    = listUser.find(user => user.username === selectedUser);
+        
+        if (!selectedUser) {
+            alert('사용자를 입력해주세요');
+            return false;
+        }
+        
+        if (!validData) {
+            alert('올바른 사용자를 선택해주세요');
+            customInput.value = '';
+            managesInput.value = '';
+            return false;
+        }
+
+        // 직접 입력한 경우 manages 값 설정
+        if (!managesInput.value && validData) {
+            managesInput.value = validData.manages;
+        }
+        
+        document.customForm.action = "/tmpl/uix/form/search-selectbox/submit";
+        document.customForm.method = "POST";
+        document.customForm.submit();
+    }
+</script>
+</html>

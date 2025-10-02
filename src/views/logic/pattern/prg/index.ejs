@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logic Http PRGPattern Index</title>
+    <title>Logic Pattern PRG Index</title>
 </head>
 <link rel="stylesheet" href="/css/styles.css">
 <body>
-	<h2>Submit Post</h2>
+	<h2>Submit Form</h2>
+	<div>preContent : <%= preContent %></div>
 	<form name="form">
-		<input type="text" name="value">
+		<input type="text" name="content">
 	</form>
-	<button onclick="fn_submitPost()">SubmitPost</button>
-	<div>
-		value : <span><%= value %></span>
-	</div>
+	<button onclick="fn_submit()">Submit</button>
 </body>
 <script>
-	function fn_submitPost() {
-		document.form.action = "/tmpl/logic/http/prg-pattern/submit-post";
+	function fn_submit() {
+		document.form.action = "/tmpl/logic/pattern/prg/submit";
 		document.form.method = "POST";
 		document.form.submit();
 	}

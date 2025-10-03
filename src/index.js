@@ -53,6 +53,7 @@ app.use(session({
 // 라우팅 매핑
 app.use('/'                            , require(global.rootPath + '/routes/main/main_Route'));
 app.use('/tmpl/logic/pattern/prg'      , require(global.rootPath + '/routes/logic/pattern/prg/logicPatternPrg_Route'));
+app.use('/tmpl/logic/pattern/wizard'   , require(global.rootPath + '/routes/logic/pattern/wizard/logicPatternWizard_Route'));
 app.use('/tmpl/auth/cookie/basic'      , require(global.rootPath + '/routes/auth/cookie/basic/authCookieBasic_Route'));
 app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth/session/basic/authSessionBasic_Route'));
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));

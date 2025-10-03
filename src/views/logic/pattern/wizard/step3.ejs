@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Pattern Wizard Step3</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    <h2>STEP 3</h2>
+    <form name="form">
+        <div>내용</div>
+        <textarea name="content"></textarea>
+    </form>
+    <button onclick="fn_submit()">제출</button>
+</body>
+<script>
+    function fn_submit() {
+        document.form.action = "/tmpl/logic/pattern/wizard/submit";
+        document.form.method = "POST";
+        document.form.submit();
+    }
+</script>
+</html>

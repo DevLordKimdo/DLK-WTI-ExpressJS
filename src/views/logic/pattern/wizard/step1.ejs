@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Pattern Wizard Step1</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    <h2>STEP 1</h2>
+    <form name="form">
+        <div>이름</div>
+        <input type="text" name="username">
+    </form>
+    <button onclick="fn_next()">다음</button>
+</body>
+<script>
+    function fn_next() {
+        document.form.action = "/tmpl/logic/pattern/wizard/step2";
+        document.form.method = "GET";
+        document.form.submit();
+    }
+</script>
+</html>

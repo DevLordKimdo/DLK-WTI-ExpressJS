@@ -12,11 +12,18 @@
         <div>내용</div>
         <textarea name="content"></textarea>
     </form>
+    <button onclick="fn_back()">뒤로</button>
     <button onclick="fn_submit()">제출</button>
 </body>
 <script>
+    function fn_back() {
+        document.form.action = "/tmpl/logic/pattern/wizard/step3/back";
+        document.form.method = "POST";
+        document.form.submit();
+    }
+
     function fn_submit() {
-        document.form.action = "/tmpl/logic/pattern/wizard/submit";
+        document.form.action = "/tmpl/logic/pattern/wizard/step3/submit";
         document.form.method = "POST";
         document.form.submit();
     }

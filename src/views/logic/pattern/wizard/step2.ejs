@@ -10,14 +10,21 @@
     <h2>STEP 2</h2>
     <form name="form">
         <div>제목</div>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<%= prevValue.title %>">
     </form>
+    <button onclick="fn_back()">뒤로</button>
     <button onclick="fn_next()">다음</button>
 </body>
 <script>
+    function fn_back() {
+        document.form.action = "/tmpl/logic/pattern/wizard/step2/back";
+        document.form.method = "POST";
+        document.form.submit();
+    }
+
     function fn_next() {
-        document.form.action = "/tmpl/logic/pattern/wizard/step3";
-        document.form.method = "GET";
+        document.form.action = "/tmpl/logic/pattern/wizard/step2/next";
+        document.form.method = "POST";
         document.form.submit();
     }
 </script>

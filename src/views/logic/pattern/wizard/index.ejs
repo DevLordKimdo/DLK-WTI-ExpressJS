@@ -9,10 +9,14 @@
 <body>
     <h2>글 작성</h2>
     <button onclick="fn_start()">시작하기</button>
+    <form name="form">
+    </form>
 </body>
 <script>
     function fn_start() {
-        location.replace('/tmpl/logic/pattern/wizard/step1');
+        document.form.action = "/tmpl/logic/pattern/wizard/step1";
+        document.form.method = "GET";
+        document.form.submit();
     }
 </script>
 </html>

@@ -75,6 +75,7 @@ app.use('/tmpl/uix/popup/send-value'   , require(global.rootPath + '/routes/uix/
 app.use('/tmpl/uix/popup/terms'        , require(global.rootPath + '/routes/uix/popup/terms/uixPopupTerms_Route'));
 app.use('/tmpl/uix/pagination/basic'   , require(global.rootPath + '/routes/uix/pagination/basic/uixPaginationBasic_Route'));
 app.use('/tmpl/uix/form/search-selectbox', require(global.rootPath + '/routes/uix/form/searchselectbox/uixFormSearchselectbox_Route'));
+app.use('/tmpl/uix/form/image-preview' , require(global.rootPath + '/routes/uix/form/imagepreview/uixFormImagepreview_Route'));
 app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Route'));
 
 const server = app.listen(svrPort);

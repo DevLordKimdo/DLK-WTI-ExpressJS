@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uix Form Image Preview Form</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<form name="form" enctype="multipart/form-data">
+        <div>
+            <!-- 기본 출력(네모) -->
+            <!-- <img src="/image/default.png" style="width: 100px; height: 100px;" id="imagePreview"> -->
+
+            <!-- 동그랗게, 이미지 꽉채우기 옵션을 넣기 -->
+            <img src="/image/default.png" style="border-radius: 50%; width: 100px; height: 100px;  object-fit: cover;" id="imagePreview">
+            <input type="file" name="imageFile" id="imageFile" accept=".png, .jpeg, .jpg, .gif" onchange="imageFileUpload(this);" style="display: none;">
+            <br/><label for="imageFile">업로드</label>
+            <br/><button type="button" onclick="imageCancel()">취소</button>
+        </div>
+	</form>
+</body>
+<script>
+    // 이미지 미리보기
+    let imagePreview = document.getElementById('imagePreview');
+
+    // 이미지 미리보기 함수
+    function imageFileUpload(input) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => { imagePreview.src = e.target.result; };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            imagePreview.src = "/image/default.png";
+        }
+    }
+
+    // 이미지 취소
+    function imageCancel() {
+        imagePreview.src = "/image/default.png";
+    }
+</script>
+</html>

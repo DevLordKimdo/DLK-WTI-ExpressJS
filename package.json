@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "better-sqlite3": "^11.9.1",
+    "better-sqlite3": "^12.4.1",
     "config": "^3.3.12",
     "connect-sqlite3": "^0.9.15",
     "cookie-parser": "^1.4.7",

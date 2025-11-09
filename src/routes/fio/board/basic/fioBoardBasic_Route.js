@@ -6,7 +6,7 @@ const fioBoard_Model  = require(global.rootPath + '/models/fioBoard_Model');
 // multer 설정
 const storage = multer.diskStorage({
     // 파일 경로 지정
-    destination: function(req, file, cb) { cb(null, global.fioPath); },
+    destination: function(req, file, cb) { cb(null, process.env.FIO_PATH); },
     // 파일 이름 지정
     filename   : function(req, file, cb) { cb(null, file.originalname); }
 });

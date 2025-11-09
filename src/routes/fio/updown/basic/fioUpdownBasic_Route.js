@@ -8,7 +8,7 @@ const mime        = require('mime-types');
 // multer 설정
 const storage = multer.diskStorage({
     // 파일 경로 지정
-    destination: function(req, file, cb) { cb(null, global.fioPath); },
+    destination: function(req, file, cb) { cb(null, process.env.FIO_PATH); },
     // 파일 이름 지정
     filename   : function(req, file, cb) { cb(null, file.originalname); }
 });
@@ -24,7 +24,7 @@ router.get(['/','/form'], async (req, res) => {
 router.get('/sample-download', async (req, res) => {
 
     let sampleFile     = 'sample.png';
-    let sampleFilePath = global.fioPath + '/' + sampleFile;
+    let sampleFilePath = process.env.FIO_PATH + '/' + sampleFile;
     let filestream     = fs.createReadStream(sampleFilePath);
     let mimeType       = mime.lookup(sampleFile) || 'application/octet-stream';
     
@@ -53,7 +53,7 @@ router.post('/multi-upload', upload.array('multiUpload','20'), async (req, res) 
 router.post('/delete-target', async (req, res) => {
 
     let deleteTarget = req.body.deleteTarget;
-    let filePath     = global.fioPath + '/' + deleteTarget;
+    let filePath     = process.env.FIO_PATH + '/' + deleteTarget;
 
     if (fs.existsSync(filePath)) {
         try {
@@ -71,9 +71,9 @@ router.post('/delete-target', async (req, res) => {
 
 router.get('/delete-all', async (req, res) => {
 
-    let files = await fsPromises.readdir(global.fioPath);
+    let files = await fsPromises.readdir(process.env.FIO_PATH);
     for(const file of files) {
-        await fsPromises.rm(global.fioPath + '/' + file);
+        await fsPromises.rm(process.env.FIO_PATH + '/' + file);
     }
 
     res.redirect('/tmpl' + '/fio/updown/basic/form');

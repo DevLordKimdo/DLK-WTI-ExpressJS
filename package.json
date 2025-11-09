@@ -3,9 +3,9 @@
   "description": "",
   "dependencies": {
     "better-sqlite3": "^12.4.1",
-    "config": "^3.3.12",
     "connect-sqlite3": "^0.9.15",
     "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "exceljs": "^4.4.0",
     "express": "^5.1.0",

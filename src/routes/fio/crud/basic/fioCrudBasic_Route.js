@@ -9,13 +9,13 @@ router.get(['/','/list'], async (req, res) => {
         let list = [];
         
         // 해당 경로가 유효한지, 혹은 폴더가 맞는지 확인
-        if (!fs.existsSync(global.fioPath) || !fs.statSync(global.fioPath).isDirectory()) {
+        if (!fs.existsSync(process.env.FIO_PATH) || !fs.statSync(process.env.FIO_PATH).isDirectory()) {
             throw new Error('유효한 폴더 경로가 아닙니다.');
         }
         // 파일 이름 목록 반환
-        let files = await fsPromises.readdir(global.fioPath);
+        let files = await fsPromises.readdir(process.env.FIO_PATH);
         for(const [index, file] of files.entries()) {
-            let filePath = global.fioPath + '/' + file;
+            let filePath = process.env.FIO_PATH + '/' + file;
 
             // 확장자 추출
             let extension;
@@ -45,7 +45,7 @@ router.get('/create', async (req, res) => {
 
 router.post('/create', async (req, res) => {
 
-    let filePath = global.fioPath + '/' + req.body.name;
+    let filePath = process.env.FIO_PATH + '/' + req.body.name;
     let content  = req.body.content;
 
     // 물리 파일 생성
@@ -57,7 +57,7 @@ router.post('/create', async (req, res) => {
 router.get('/read/:name', async (req, res) => {
 
     let fileName = req.params.name;
-    let filePath = global.fioPath + '/' + fileName;
+    let filePath = process.env.FIO_PATH + '/' + fileName;
     let read     = {};
 
     read.name    = fileName;
@@ -72,8 +72,8 @@ router.post('/update/:preName', async (req, res) => {
     let preName     = req.params.preName;
     let content     = req.body.content;
     let name        = req.body.name;
-    let filePath    = global.fioPath + '/' + preName;
-    let newFilePath = global.fioPath + '/' + name;
+    let filePath    = process.env.FIO_PATH + '/' + preName;
+    let newFilePath = process.env.FIO_PATH + '/' + name;
 
     // 파일 내용 수정
     await fsPromises.writeFile(filePath, content, 'utf-8');
@@ -89,7 +89,7 @@ router.post('/update/:preName', async (req, res) => {
 router.get('/delete/:name', async (req, res) => {
 
     let name        = req.params.name;
-    let filePath    = global.fioPath + '/' + name;
+    let filePath    = process.env.FIO_PATH + '/' + name;
 
     // 파일 삭제
     await fsPromises.rm(filePath);

@@ -1,5 +1,4 @@
 const express      = require('express');
-const config       = require('config');
 const path         = require('path');
 const http         = require('http');
 const app          = express();
@@ -8,15 +7,16 @@ const SQLiteStore  = require('connect-sqlite3')(session);
 const cookieParser = require('cookie-parser');
 const WebSocket    = require('ws');
 
+// ENV 파일 설정
+const env = process.env.NODE_ENV || 'local';
+require('dotenv').config({ path: `./.env.${env}` });
+
 // global 경로 설정
 global.rootPath   = path.resolve('src');
 global.viewPath   = path.join(__dirname, 'views');
 
 global.dbConf     = path.join(__dirname, '../config/database');
 global.dbInitQry  = path.join(__dirname, '../config/StartQuery.sql');
-global.dbFilePath = path.join('C:/SQL/database.db');
-
-global.fioPath    = path.join('C:/fio');
 
 // 정적파일 디렉토리 설정 (css, js, img)
 app.use(express.static(path.resolve('static')));
@@ -26,9 +26,8 @@ app.set('view engine', 'ejs');
 app.set('views', global.viewPath);
 app.set('view cache', false);
 
-// server 설정
-const svrConf = config.get('server');
-const svrPort = svrConf.port;
+// server 포트 설정
+const svrPort = process.env.SERVER_PORT;
 
 // JSON 형식의 요청 본문을 파싱
 app.use(express.json());
@@ -78,8 +77,12 @@ app.use('/tmpl/uix/form/search-selectbox', require(global.rootPath + '/routes/ui
 app.use('/tmpl/uix/form/image-preview' , require(global.rootPath + '/routes/uix/form/imagepreview/uixFormImagepreview_Route'));
 app.use('/tmpl/ws/connect/basic'       , require(global.rootPath + '/routes/ws/connect/basic/wsConnectBasic_Route'));
 
-const server = app.listen(svrPort);
-// app.listen(svrPort, () => { console.log('서버 가동'); }); // 위 코드와 동일
+// const server = app.listen(svrPort);
+const server = app.listen(svrPort, () => { 
+    console.log(`SERVER START `);
+    console.log(`SERVER PORT : ${svrPort}`);
+    console.log(`ENV CONFIG  : ${env}`);
+});
 
 // 웹소켓 매핑
 const wsConnectBasicConfig             = require(global.rootPath + '/websocket/wsConnectBasic_Config');

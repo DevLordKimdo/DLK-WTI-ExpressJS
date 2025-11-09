@@ -3,11 +3,11 @@ const sqlite3  = require('better-sqlite3');
 
 // 데이터베이스 옵션 지정
 const dbOption = {
-  readonly    : process.env.DB_READONLY === 'true' ? true : false,     // 읽기 전용. SELECT만 가능, CUD문 불가.
-  timeout     : Number(process.env.DB_TIMEOUT),      // 데이터베이스 연결 시 시간제한 timeout (ms)
-  memoryLimit : Number(process.env.DB_MEMORYLIMIT),  // 메모리 사용량 제한 (바이트) SQLite가 사용할 수 있는 최대 메모리.
-  pageSize    : Number(process.env.DB_PAGESIZE),     // 데이터베이스 페이지 크기
-  mode        : process.env.DB_MODE          // 동시성 제어. (normal / exclusive) 다른 서비스에서 해당 DB를 제어 가능 여부 옵션
+  readonly    : process.env.DB_READONLY === 'true' ? true : false, // 읽기 전용. SELECT만 가능, CUD문 불가.
+  timeout     : Number(process.env.DB_TIMEOUT),     // 데이터베이스 연결 시 시간제한 timeout (ms)
+  memoryLimit : Number(process.env.DB_MEMORYLIMIT), // 메모리 사용량 제한 (바이트) SQLite가 사용할 수 있는 최대 메모리.
+  pageSize    : Number(process.env.DB_PAGESIZE),    // 데이터베이스 페이지 크기
+  mode        : process.env.DB_MODE                 // 동시성 제어. (normal / exclusive) 다른 서비스에서 해당 DB를 제어 가능 여부 옵션
 }
 
 // 데이터베이스 연결 생성

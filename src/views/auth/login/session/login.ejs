@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Login Session Login</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    <form name="form">
+        <table border="1">
+            <h2>로그인을 해주세요</h2>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>패스워드</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" onclick="fn_login()">로그인</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script>
+	function fn_login() {
+		document.form.action = "/tmpl/auth/login/session/login";
+		document.form.method = "POST";
+		document.form.submit();
+	}
+</script>
+</html>

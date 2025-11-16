@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Login Session Index</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+    <h2>WELCOME INDEX PAGE</h2>
+    <button type="button" onclick="fn_logout()">로그아웃</button>
+    <form name="form"></form>
+</body>
+<script>
+    function fn_logout() {
+		document.form.action = "/tmpl/auth/login/session/logout";
+		document.form.method = "POST";
+		document.form.submit();
+    }
+</script>
+</html>

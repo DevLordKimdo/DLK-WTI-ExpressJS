@@ -14,7 +14,9 @@ const checkSession = (req, res, next) => {
 
 router.get(['/','/index'], checkSession, async (req, res) => {
 
-    res.render('auth/login/session/index', {});
+    let data = 'my private data';
+
+    res.render('auth/login/session/index', { data : data });
 });
 
 router.get(['/login'], async (req, res) => {

@@ -55,9 +55,7 @@ app.use('/tmpl/logic/pattern/prg'      , require(global.rootPath + '/routes/logi
 app.use('/tmpl/logic/pattern/wizard'   , require(global.rootPath + '/routes/logic/pattern/wizard/logicPatternWizard_Route'));
 app.use('/tmpl/auth/cookie/basic'      , require(global.rootPath + '/routes/auth/cookie/basic/authCookieBasic_Route'));
 app.use('/tmpl/auth/session/basic'     , require(global.rootPath + '/routes/auth/session/basic/authSessionBasic_Route'));
-
 app.use('/tmpl/auth/login/session'     , require(global.rootPath + '/routes/auth/login/session/authLoginSession_Route'));
-
 app.use('/tmpl/db/crud/basic'          , require(global.rootPath + '/routes/db/crud/basic/dbCrudBasic_Route'));
 app.use('/tmpl/db/search/basic'        , require(global.rootPath + '/routes/db/search/basic/dbSearchBasic_Route'));
 app.use('/tmpl/db/crud/return-idx'     , require(global.rootPath + '/routes/db/crud/returnidx/dbCrudReturnidx_Route'));

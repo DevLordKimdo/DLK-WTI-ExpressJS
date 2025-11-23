@@ -21,7 +21,7 @@ router.get(['/','/index'], checkSession, async (req, res) => {
 
 router.get(['/login'], async (req, res) => {
 
-    const username = req.session.username
+    const username = req.session.username;
 
     if(username === 'admin') {
         res.redirect('/tmpl' + '/auth/login/session/index');
